@@ -1,22 +1,3384 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chiba Sushi | Victoria's Best Japanese Restaurant & Sushi Bar</title>
-    <meta name="description" content="Chiba Sushi Japanese Restaurant in Victoria, BC. Awarded Best Sushi in Victoria 2023. Fresh sashimi, signature rolls, Aburi Oshi, and authentic Japanese cuisine at 2630 Quadra Street." />
-    <meta property="og:title" content="Chiba Sushi | Victoria's Best Japanese Restaurant & Sushi Bar" />
-    <meta property="og:description" content="Award-winning authentic sushi, fresh Pacific sashimi, and modern Japanese dining in Quadra Village, Victoria, BC." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="./images/slides/slide_01.jpg" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Cinzel:wght@500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
-  </head>
-  <body class="bg-[#0d0d0d] text-[#e5e7eb] antialiased selection:bg-[#c5a059] selection:text-black">
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chiba Sushi | Victoria's Best Japanese Restaurant &amp; Sushi Bar</title>
+  <meta name="description" content="Chiba Sushi Japanese Restaurant in Victoria, BC. Awarded Best Sushi in Victoria 2023. Fresh sashimi, signature rolls, Aburi Oshi, and authentic Japanese cuisine at 2630 Quadra Street." />
+  <meta property="og:title" content="Chiba Sushi | Victoria's Best Japanese Restaurant &amp; Sushi Bar" />
+  <meta property="og:description" content="Award-winning authentic sushi, fresh Pacific sashimi, and modern Japanese dining in Quadra Village, Victoria, BC." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="./images/slides/slide_01.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Noto+Serif+JP:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+  <style>
+    /* CSS RESET & VARIABLES */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-dark: #0a0a0a;
+      --bg-surface: #121212;
+      --bg-card: #181818;
+      --bg-card-hover: #202020;
+      --gold: #c5a059;
+      --gold-light: #e0c283;
+      --gold-dark: #9d7c3b;
+      --gold-glow: rgba(197, 160, 89, 0.2);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-gold: rgba(197, 160, 89, 0.35);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-pill: 9999px;
+      --font-display: 'Cinzel', serif;
+      --font-serif: 'Cormorant Garamond', serif;
+      --font-jp: 'Noto Serif JP', serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+    }
+
+    body {
+      min-height: 100vh;
+      line-height: 1.6;
+      background-color: var(--bg-dark);
+      overflow-x: hidden;
+      selection-background-color: var(--gold);
+      selection-color: #000;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s, opacity 0.2s;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    /* UTILITY LAYOUT */
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .section-padding {
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+
+    @media (max-width: 768px) {
+      .section-padding {
+        padding-top: 50px;
+        padding-bottom: 50px;
+      }
+    }
+
+    /* ANNOUNCEMENT BAR */
+    .top-bar {
+      background: #0f0e0b;
+      border-bottom: 1px solid rgba(197, 160, 89, 0.25);
+      font-size: 12px;
+      padding: 8px 16px;
+      color: #e2c283;
+      letter-spacing: 0.05em;
+    }
+    .top-bar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .top-bar-award {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+    }
+    .top-bar-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: var(--text-muted);
+    }
+    .top-bar-links a:hover {
+      color: var(--gold-light);
+    }
+
+    /* HEADER & NAV */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 990;
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .brand-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: #fff;
+      line-height: 1.1;
+    }
+    .brand-title span {
+      color: var(--gold);
+    }
+    .brand-subtitle {
+      font-size: 10px;
+      color: var(--text-muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .brand-jp {
+      font-family: var(--font-jp);
+      font-size: 11px;
+      color: var(--gold-dark);
+      letter-spacing: 0.1em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      position: relative;
+      padding: 6px 0;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--gold);
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: width 0.25s ease;
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 20px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: var(--radius-sm);
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: #000;
+      box-shadow: 0 4px 14px var(--gold-glow);
+    }
+    .btn-gold:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(197, 160, 89, 0.35);
+    }
+    .btn-outline {
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      background: rgba(197, 160, 89, 0.05);
+    }
+    .btn-outline:hover {
+      background: var(--gold);
+      color: #000;
+    }
+    .btn-glass {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-subtle);
+      color: #fff;
+    }
+    .btn-glass:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    
+    
+
+    .mobile-menu-toggle {
+      display: none;
+      padding: 8px;
+      color: var(--text-main);
+    }
+
+    /* MOBILE DRAWER */
+    .mobile-drawer {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(10, 10, 10, 0.98);
+      backdrop-filter: blur(16px);
+      z-index: 989;
+      padding: 24px;
+      overflow-y: auto;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .mobile-drawer.open {
+      display: block;
+    }
+    .mobile-drawer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      list-style: none;
+      margin-bottom: 24px;
+    }
+    .mobile-drawer-links a {
+      font-size: 18px;
+      font-family: var(--font-display);
+      letter-spacing: 0.1em;
+      color: var(--text-main);
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-subtle);
+      display: block;
+    }
+    .mobile-drawer-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      position: relative;
+      height: 84vh;
+      min-height: 560px;
+      overflow: hidden;
+    }
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+      transform: scale(1.02);
+      transition: transform 6s ease-out, opacity 0.8s ease-in-out;
+    }
+    .hero-slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10, 10, 10, 0.45) 0%, rgba(10, 10, 10, 0.85) 75%, #0a0a0a 100%),
+                  radial-gradient(ellipse at center, rgba(10, 10, 10, 0.2) 0%, rgba(10, 10, 10, 0.85) 100%);
+    }
+    .hero-container {
+      position: relative;
+      z-index: 10;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .hero-content {
+      max-width: 720px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(20, 18, 12, 0.85);
+      border: 1px solid var(--border-gold);
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      color: var(--gold-light);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+      backdrop-filter: blur(8px);
+    }
+    .hero-award-icon {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(34px, 5.5vw, 60px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.15;
+      letter-spacing: 0.02em;
+      margin-bottom: 18px;
+    }
+    .hero-sub {
+      font-family: var(--font-sans);
+      font-size: clamp(16px, 2vw, 19px);
+      color: #d1d5db;
+      line-height: 1.6;
+      margin-bottom: 32px;
+      max-width: 620px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    /* HERO CONTROLS */
+    .hero-controls {
+      position: absolute;
+      bottom: 24px;
+      right: 24px;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: rgba(10, 10, 10, 0.75);
+      backdrop-filter: blur(8px);
+      padding: 8px 16px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-subtle);
+    }
+    .hero-arrows {
+      display: flex;
+      gap: 8px;
+    }
+    .hero-arrow {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      transition: all 0.2s;
+    }
+    .hero-arrow:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.15);
+    }
+    .hero-dots {
+      display: flex;
+      gap: 8px;
+    }
+    .hero-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
+      transition: all 0.3s;
+    }
+    .hero-dot.active {
+      width: 24px;
+      border-radius: 4px;
+      background: var(--gold);
+    }
+
+    /* HIGHLIGHTS STRIP */
+    .highlights-strip {
+      background: #111111;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 24px 0;
+    }
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .highlight-box {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 8px;
+    }
+    .highlight-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      background: #1b1915;
+      border: 1px solid var(--border-gold);
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .highlight-text h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+    }
+    .highlight-text p {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* SECTION HEADERS */
+    .section-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 48px auto;
+    }
+    .section-eyebrow {
+      font-family: var(--font-jp);
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+    .section-desc {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* STORY SECTION */
+    .story-section {
+      background: #0d0d0d;
+    }
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .story-images {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .story-img-main {
+      grid-column: span 2;
+      height: 240px;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+    }
+    .story-img-sub {
+      height: 160px;
+      width: 100%;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+    }
+    .story-award-card {
+      background: #16140e;
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-top: 24px;
+    }
+    .story-award-img {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    .story-award-text h5 {
+      font-family: var(--font-display);
+      font-size: 14px;
+      color: var(--gold-light);
+      margin-bottom: 4px;
+    }
+    .story-award-text p {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .story-pillars {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 28px;
+    }
+    .pillar-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+    }
+    .pillar-card h5 {
+      color: var(--gold);
+      font-size: 14px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .pillar-card p {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* MENU SECTION */
+    .menu-section {
+      background: #0a0a0a;
+    }
+    .menu-toolbar {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin-bottom: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .menu-search-wrap {
+      position: relative;
+      width: 100%;
+    }
+    .menu-search-input {
+      width: 100%;
+      background: #181818;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px 12px 42px;
+      font-size: 14px;
+      color: #fff;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .menu-search-input:focus {
+      border-color: var(--gold);
+    }
+    .menu-search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-dim);
+    }
+
+    .category-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .cat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #1a1a1a;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      padding: 8px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: all 0.2s;
+    }
+    .cat-pill:hover {
+      background: #242424;
+      color: #fff;
+    }
+    .cat-pill.active {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #000;
+      font-weight: 600;
+    }
+    .cat-badge {
+      background: rgba(0, 0, 0, 0.25);
+      color: inherit;
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 10px;
+    }
+
+        
+    
+    /* ZIG-ZAG 2-COLUMN OFFSET FOOD LAYOUT */
+    .menu-layout-container {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 32px;
+      align-items: start;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .menu-pics-column {
+      position: sticky;
+      top: 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      background: var(--bg-card);
+      padding: 20px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+    }
+    .menu-pics-column h4 {
+      font-family: var(--font-serif);
+      font-size: 16px;
+      color: var(--gold-light);
+      margin-bottom: 4px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    .pics-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-height: 600px;
+      overflow-y: auto;
+      padding-right: 4px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--gold) var(--bg-card);
+    }
+    .pics-stack img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      transition: transform 0.4s ease, border-color 0.4s ease;
+    }
+    .pics-stack img:hover {
+      transform: scale(1.03);
+      border-color: var(--gold);
+    }
+
+    .menu-food-column {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* 2-Column Food Grid */
+    .dish-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .dish-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .dish-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(197, 160, 89, 0.5);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+    .dish-content {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .dish-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .dish-titles {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .dish-name {
+      font-family: var(--font-serif);
+      font-size: 16px;
+      color: #fff;
+      font-weight: 600;
+    }
+    .dish-jp {
+      font-size: 11px;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+    }
+    .dish-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+    .dish-price-middle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .dish-price {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      color: var(--gold-light);
+      font-weight: 600;
+    }
+    .dish-pieces {
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+    .dish-badge-col {
+      display: flex;
+      justify-content: flex-end;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(197, 160, 89, 0.15);
+      border: 1px solid var(--border-gold);
+      color: var(--gold-light);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 1024px) {
+      .menu-layout-container {
+        grid-template-columns: 1fr;
+      }
+      .menu-pics-column {
+        position: static;
+      }
+      .pics-stack {
+        flex-direction: row;
+        overflow-x: auto;
+      }
+      .pics-stack img {
+        flex: 0 0 200px;
+        height: 140px;
+      }
+      .dish-grid {
+        grid-template-columns: 1fr;
+      }
+      .dish-card:nth-child(even) {
+        transform: none !important;
+      }
+    }
+
+
+
+
+
+    .dish-content {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .dish-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 8px;
+      gap: 12px;
+    }
+    .dish-name {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.25;
+    }
+    .dish-jp {
+      font-family: var(--font-jp);
+      font-size: 11px;
+      color: var(--gold-dark);
+      display: block;
+      margin-top: 2px;
+    }
+    .dish-price-wrap {
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .dish-price {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--gold-light);
+      display: block;
+    }
+    .dish-pieces {
+      font-size: 10px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .dish-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+    .dish-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 14px;
+      margin-top: auto;
+    }
+    
+    
+
+    /* NO RESULTS MSG */
+    .no-results {
+      display: none;
+      text-align: center;
+      padding: 60px 20px;
+      grid-column: 1 / -1;
+      color: var(--text-dim);
+    }
+
+    /* FLOATING TRAY BAR (BOTTOM) */
+    
+    
+    
+    
+    
+
+    /* TRAY MODAL DRAWER */
+    
+    
+    
+    @keyframes slideInRight {
+      from { transform: translateX(100%); }
+      to { transform: translateX(0); }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    .qty-btn {
+      width: 26px;
+      height: 26px;
+      background: #262626;
+      border: 1px solid var(--border-subtle);
+      color: #fff;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+    .qty-btn:hover {
+      background: var(--gold);
+      color: #000;
+    }
+    
+    
+    
+    
+    
+
+    /* GALLERY SECTION */
+    .gallery-section {
+      background: #0a0a0a;
+    }
+    .gallery-toolbar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+    .gallery-pill {
+      background: #181818;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      padding: 8px 18px;
+      border-radius: var(--radius-pill);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+    .gallery-pill:hover {
+      color: #fff;
+      background: #242424;
+    }
+    .gallery-pill.active {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #000;
+      font-weight: 600;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 18px;
+    }
+    .gallery-item {
+      position: relative;
+      height: 260px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      cursor: pointer;
+      border: 1px solid var(--border-subtle);
+    }
+    .gallery-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 20%, rgba(10, 10, 10, 0.9) 100%);
+      opacity: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 18px;
+      transition: opacity 0.3s ease;
+    }
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+    .gallery-item:hover .gallery-img {
+      transform: scale(1.08);
+    }
+    .gallery-cat {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+    .gallery-title {
+      font-family: var(--font-display);
+      font-size: 15px;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+    .gallery-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+    .gallery-view-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* LIGHTBOX MODAL */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 5, 5, 0.95);
+      backdrop-filter: blur(12px);
+      z-index: 1100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .lightbox.open {
+      display: flex;
+    }
+    .lightbox-content {
+      max-width: 900px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    .lightbox-img {
+      max-height: 70vh;
+      max-width: 100%;
+      border-radius: var(--radius-sm);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+      border: 1px solid var(--border-gold);
+    }
+    .lightbox-caption {
+      text-align: center;
+      margin-top: 18px;
+    }
+    .lightbox-caption h4 {
+      font-family: var(--font-display);
+      font-size: 18px;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .lightbox-caption p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      color: var(--text-muted);
+      font-size: 28px;
+      padding: 6px;
+    }
+    .lightbox-close:hover {
+      color: #fff;
+    }
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--border-subtle);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox-prev { left: -60px; }
+    .lightbox-next { right: -60px; }
+    .lightbox-nav:hover {
+      background: var(--gold);
+      color: #000;
+    }
+
+    @media (max-width: 768px) {
+      .lightbox-prev { left: 10px; }
+      .lightbox-next { right: 10px; }
+    }
+
+    /* TESTIMONIALS SECTION */
+    .testimonials-section {
+      background: #111111;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .testimonial-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .stars {
+      color: var(--gold);
+      font-size: 16px;
+      margin-bottom: 12px;
+      letter-spacing: 2px;
+    }
+    .test-text {
+      font-family: var(--font-serif);
+      font-size: 17px;
+      font-style: italic;
+      color: #e5e7eb;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+    .test-author {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 12px;
+    }
+    .author-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+    }
+    .author-source {
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
+    /* HOURS & LOCATION SECTION */
+    .location-section {
+      background: #0d0d0d;
+    }
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+    }
+    .location-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      width: fit-content;
+    }
+    .status-open {
+      background: rgba(34, 197, 94, 0.15);
+      border: 1px solid rgba(34, 197, 94, 0.4);
+      color: #4ade80;
+    }
+    .status-closed {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #f87171;
+    }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .hours-table tr {
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .hours-table td {
+      padding: 10px 0;
+      font-size: 13px;
+    }
+    .hours-table td:first-child {
+      color: #fff;
+      font-weight: 600;
+      width: 45%;
+    }
+    .hours-table td:last-child {
+      color: var(--text-muted);
+      text-align: right;
+    }
+
+    .map-frame {
+      width: 100%;
+      height: 100%;
+      min-height: 380px;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    /* FOOTER */
+    .site-footer {
+      background: #070707;
+      border-top: 1px solid var(--border-subtle);
+      padding: 60px 0 30px 0;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+    .footer-brand h3 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .footer-brand p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 320px;
+      margin-bottom: 16px;
+    }
+    .footer-socials {
+      display: flex;
+      gap: 12px;
+    }
+    .footer-socials a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #181818;
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+    }
+    .footer-socials a:hover {
+      background: var(--gold);
+      color: #000;
+    }
+    .footer-col h4 {
+      font-family: var(--font-display);
+      font-size: 14px;
+      color: var(--gold-light);
+      margin-bottom: 16px;
+      letter-spacing: 0.05em;
+    }
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-col a {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .footer-col a:hover {
+      color: #fff;
+    }
+    .footer-bottom {
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    /* SUCCESS MODAL */
+    .success-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 1200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .success-modal.open {
+      display: flex;
+    }
+    .success-box {
+      background: #181818;
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+    }
+    .success-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(197, 160, 89, 0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px auto;
+    }
+    .success-box h3 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .success-box p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    /* RESPONSIVE MEDIA QUERIES */
+    @media (max-width: 1024px) {
+      .highlights-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .story-grid {
+        grid-template-columns: 1fr;
+      }
+      .location-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-actions .btn-online-nav {
+        display: none;
+      }
+      .mobile-menu-toggle {
+        display: block;
+      }
+      .highlights-grid {
+        grid-Template-columns: 1fr;
+      }
+      .form-group.full {
+        grid-column: span 1;
+      }
+      .footer-grid {
+        grid-Template-columns: 1fr;
+      }
+      .hero-controls {
+        right: 16px;
+        bottom: 16px;
+      }
+    }
+  
+    /* PARALLAX SCROLL GALLERY SECTION */
+    .parallax-section {
+        position: relative;
+        height: 500px;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url('./images/gallery/01_IMG_8341.jpg');
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        margin: 60px 0;
+        overflow: hidden;
+    }
+    .parallax-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.7);
+        backdrop-filter: blur(2px);
+    }
+    .parallax-content {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        padding: 0 24px;
+    }
+    .parallax-content h2 {
+        font-family: var(--font-serif);
+        font-size: 38px;
+        color: var(--gold-light);
+        margin-bottom: 16px;
+        letter-spacing: 1px;
+    }
+    .parallax-content p {
+        font-size: 16px;
+        color: #e2e8f0;
+        line-height: 1.7;
+        margin-bottom: 24px;
+    }
+    .parallax-gallery-strip {
+        display: flex;
+        gap: 16px;
+        overflow-x: auto;
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto 60px auto;
+        scrollbar-width: thin;
+        scrollbar-color: var(--gold) var(--bg-card);
+    }
+    .parallax-thumb {
+        flex: 0 0 280px;
+        height: 200px;
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        border: 1px solid var(--border);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        transition: transform 0.4s ease, border-color 0.4s ease;
+    }
+    .parallax-thumb:hover {
+        transform: translateY(-8px) scale(1.02);
+        border-color: var(--gold);
+    }
+    .parallax-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+    }
+    .parallax-thumb:hover img {
+        transform: scale(1.1);
+    }
+
+</style>
+</head>
+<body>
+
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-award">
+        <span>🏆 Quality Business Awards 2023 Winner:</span>
+        <strong style="color: #fff;">Selected as 'The Best Sushi Restaurant in Victoria, BC'</strong>
+      </div>
+      <div class="top-bar-links">
+        <a href="tel:250-383-9886">📞 250-383-9886</a>
+        <span>•</span>
+        <a href="#location">📍 Quadra Village (2630 Quadra St)</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY SITE HEADER -->
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="#home" class="brand">
+        <div class="brand-logo-text">
+          <span class="brand-title">CHIBA <span>SUSHI</span></span>
+          <span class="brand-subtitle">Seafood &amp; Steak • Victoria BC</span>
+        </div>
+        <span class="brand-jp">千葉寿司</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#story">Our Story</a>
+        <a href="#gallery">Gallery</a>
+        
+        <a href="#location">Hours &amp; Location</a>
+      </nav>
+
+      <div class="nav-actions">
+        
+
+        <a href="https://www.qooway.com/olo/en?ChibaSushi&menuid=3" target="_blank" rel="noopener" class="btn btn-gold btn-online-nav">
+          Order Online
+        </a>
+
+        <button type="button" class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle navigation">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE NAVIGATION DRAWER -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <ul class="mobile-drawer-links">
+      <li><a href="#home" onclick="closeMobileMenu()">Home</a></li>
+      <li><a href="#menu" onclick="closeMobileMenu()">Menu</a></li>
+      <li><a href="#story" onclick="closeMobileMenu()">Our Story</a></li>
+      <li><a href="#gallery" onclick="closeMobileMenu()">Photo Gallery</a></li>
+      <li></li>
+      <li><a href="#location" onclick="closeMobileMenu()">Hours &amp; Location</a></li>
+    </ul>
+    <div class="mobile-drawer-actions">
+      <a href="https://www.qooway.com/olo/en?ChibaSushi&menuid=3" target="_blank" rel="noopener" class="btn btn-gold" style="width: 100%;">
+        Order Online (Pickup)
+      </a>
+      <a href="https://www.doordash.com/business/442465/" target="_blank" rel="noopener" class="btn btn-outline" style="width: 100%;">
+        DoorDash Delivery
+      </a>
+      <a href="tel:250-383-9886" class="btn btn-glass" style="width: 100%;">
+        Call: 250-383-9886
+      </a>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+      
+    <div class="hero-slide active" style="background-image: url('./images/slides/slide_01.jpg')">
+        <div class="hero-overlay"></div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <img src="./images/award-2023.png" alt="Award 2023" class="hero-award-icon" onerror="this.style.display='none'">
+                    <span>Quality Business Award Winner 2023</span>
+                </div>
+                <h1 class="hero-title">Victoria&#x27;s Best Sushi Experience</h1>
+                <p class="hero-sub">Locally sourced B.C. wild salmon, pristine albacore, and artisanal sushi rolls crafted with heart in Quadra Village.</p>
+                <div class="hero-actions">
+                    <a href="#menu" class="btn btn-gold">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3zM8 12h8M8 8h8M8 16h5"/></svg>
+                        <span>Explore Menu</span>
+                    </a>
+                    <a href="https://www.qooway.com/olo/en?ChibaSushi&menuid=3" target="_blank" rel="noopener" class="btn btn-outline">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                        <span>Order Pickup</span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hero-slide " style="background-image: url('./images/slides/slide_02.jpg')">
+        <div class="hero-overlay"></div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <img src="./images/award-2023.png" alt="Award 2023" class="hero-award-icon" onerror="this.style.display='none'">
+                    <span>Chef&#x27;s Signature Craft</span>
+                </div>
+                <h1 class="hero-title">Signature Aburi Oshi &amp; Rolls</h1>
+                <p class="hero-sub">Delicately flame-seared pressed sushi infused with house-blended sauces and premium toppings.</p>
+                <div class="hero-actions">
+                    <a href="#menu" class="btn btn-gold">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3zM8 12h8M8 8h8M8 16h5"/></svg>
+                        <span>Explore Menu</span>
+                    </a>
+                    <a href="https://www.qooway.com/olo/en?ChibaSushi&menuid=3" target="_blank" rel="noopener" class="btn btn-outline">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                        <span>Order Pickup</span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hero-slide " style="background-image: url('./images/slides/slide_03.jpg')">
+        <div class="hero-overlay"></div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <img src="./images/award-2023.png" alt="Award 2023" class="hero-award-icon" onerror="this.style.display='none'">
+                    <span>Ocean Fresh Daily</span>
+                </div>
+                <h1 class="hero-title">Fresh Pacific Sashimi</h1>
+                <p class="hero-sub">Generous, pristine cuts of wild sockeye, hamachi, toro, and Hokkaido scallop prepared fresh daily.</p>
+                <div class="hero-actions">
+                    <a href="#menu" class="btn btn-gold">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3zM8 12h8M8 8h8M8 16h5"/></svg>
+                        <span>Explore Menu</span>
+                    </a>
+                    <a href="https://www.qooway.com/olo/en?ChibaSushi&menuid=3" target="_blank" rel="noopener" class="btn btn-outline">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                        <span>Order Pickup</span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hero-slide " style="background-image: url('./images/slides/slide_04.jpg')">
+        <div class="hero-overlay"></div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <img src="./images/award-2023.png" alt="Award 2023" class="hero-award-icon" onerror="this.style.display='none'">
+                    <span>Authentic Kitchen</span>
+                </div>
+                <h1 class="hero-title">Warm Izakaya &amp; Sizzling Teppan</h1>
+                <p class="hero-sub">From crisp gyoza and takoyaki to sizzling teriyaki platters and comforting udon noodles.</p>
+                <div class="hero-actions">
+                    <a href="#menu" class="btn btn-gold">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3zM8 12h8M8 8h8M8 16h5"/></svg>
+                        <span>Explore Menu</span>
+                    </a>
+                    <a href="https://www.qooway.com/olo/en?ChibaSushi&menuid=3" target="_blank" rel="noopener" class="btn btn-outline">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                        <span>Order Pickup</span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+      <div class="hero-controls">
+        <div class="hero-arrows">
+          <button type="button" class="hero-arrow" onclick="prevSlide()" aria-label="Previous Slide">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <button type="button" class="hero-arrow" onclick="nextSlide()" aria-label="Next Slide">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
+        <div class="hero-dots">
+          <button type="button" class="hero-dot active" data-slide="0" aria-label="Slide 1"></button><button type="button" class="hero-dot " data-slide="1" aria-label="Slide 2"></button><button type="button" class="hero-dot " data-slide="2" aria-label="Slide 3"></button><button type="button" class="hero-dot " data-slide="3" aria-label="Slide 4"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- HIGHLIGHTS STRIP -->
+    <section class="highlights-strip">
+      <div class="container">
+        <div class="highlights-grid">
+          <div class="highlight-box">
+            <div class="highlight-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div class="highlight-text">
+              <h4>Pacific Wild Salmon &amp; Sashimi</h4>
+              <p>Locally sourced fresh fish cuts daily</p>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            <div class="highlight-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+            </div>
+            <div class="highlight-text">
+              <h4>Flame-Seared Aburi Oshi</h4>
+              <p>Signature flame torching &amp; savory glazes</p>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            <div class="highlight-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+            </div>
+            <div class="highlight-text">
+              <h4>Best Sushi Award 2023</h4>
+              <p>Quality Business Awards Victoria</p>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            <div class="highlight-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="highlight-text">
+              <h4>Quadra Village Since 2007</h4>
+              <p>Welcoming neighborhood landmark</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OUR STORY SECTION -->
+    <section class="section-padding story-section" id="story">
+      <div class="container">
+        <div class="story-grid">
+          <div>
+            <span class="section-eyebrow">伝統と真心 • TRADITION &amp; PASSION</span>
+            <h2 class="section-title">Rooted in Victoria's Craft Since 2007</h2>
+            <p class="section-desc" style="margin-bottom: 20px;">
+              For nearly two decades, Chiba Sushi has been a cherished culinary staple in Victoria, British Columbia. In June 2021, we welcomed our loyal guests to our spacious, warm modern dining room in the heart of Quadra Village at 2630 Quadra Street.
+            </p>
+            <p class="section-desc" style="margin-bottom: 24px;">
+              Our sushi chefs combine time-honored Edo Japanese techniques with British Columbia's richest coastal bounty—featuring pristine wild Pacific sockeye salmon, tender albacore tuna, and sweet botan ebi. Every piece of fish is sliced with reverence, every roll flame-seared with artisanal glazes, and every broth slow-simmered in house.
+            </p>
+
+            <div class="story-pillars">
+              <div class="pillar-card">
+                <h5>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                  Wild Coastal Catch
+                </h5>
+                <p>Prioritizing sustainable B.C. wild salmon, albacore tuna, and real Dungeness crab.</p>
+              </div>
+
+              <div class="pillar-card">
+                <h5>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                  Aburi Flame Craft
+                </h5>
+                <p>Flame-torched pressed box sushi (Oshi) with secret reductions and serrano accents.</p>
+              </div>
+
+              <div class="pillar-card">
+                <h5>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                  Warm Izakaya Comforts
+                </h5>
+                <p>Sizzling teriyaki platters, crisp tempura, handmade gyoza, and comforting udon.</p>
+              </div>
+
+              <div class="pillar-card">
+                <h5>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                  Licensed Sake &amp; Drinks
+                </h5>
+                <p>Chilled Junmai Ginjo sake, Asahi draft beer, local wines, and roasted genmaicha.</p>
+              </div>
+            </div>
+
+            <div class="story-award-card">
+              <img src="./images/award-2023.png" alt="Best Sushi in Victoria 2023 Award" class="story-award-img" onerror="this.style.display='none'">
+              <div class="story-award-text">
+                <h5>Selected "The Best Sushi Restaurant in Victoria, BC"</h5>
+                <p>Honored by Quality Business Awards 2023 for excellence in fish freshness, hospitality, and outstanding customer feedback.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="story-images">
+            <img src="./images/img_2_IMG_8341.jpg" alt="Chiba Sushi Master Platter" class="story-img-main">
+            <img src="./images/gallery/07_IMG_8346.jpg" alt="Chiba Sushi Quadra Village Dining Room" class="story-img-sub">
+            <img src="./images/img_4.jpg" alt="Chiba Sushi Fresh Cuts" class="story-img-sub">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE MENU SECTION -->
+    <section class="section-padding menu-section" id="menu">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">お品書き • OUR COMPLETE MENU</span>
+          <h2 class="section-title">Artisanal Rolls, Sashimi &amp; Kitchen Classics</h2>
+          <p class="section-desc">
+            Explore our curated culinary creations crafted fresh to order. Filter by category or search by ingredient.
+          </p>
+        </div>
+
+        <div class="menu-toolbar">
+          <div class="menu-search-wrap">
+            <svg class="menu-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <input type="text" id="menuSearch" class="menu-search-input" placeholder="Search dishes (e.g., wild salmon, aburi, tempura, jackie, bento)..." oninput="handleMenuSearch()">
+          </div>
+
+          <div class="category-pills">
+            
+    <button type="button" class="cat-pill active" data-cat="All" onclick="filterCategory('All', this)">
+        <span>All</span>
+        <span class="cat-badge">49</span>
+    </button>
+    <button type="button" class="cat-pill " data-cat="Specialty Rolls" onclick="filterCategory('Specialty Rolls', this)">
+        <span>Specialty Rolls</span>
+        <span class="cat-badge">10</span>
+    </button>
+    <button type="button" class="cat-pill " data-cat="Aburi Oshi &amp; Nigiri" onclick="filterCategory('Aburi Oshi &amp; Nigiri', this)">
+        <span>Aburi Oshi &amp; Nigiri</span>
+        <span class="cat-badge">6</span>
+    </button>
+    <button type="button" class="cat-pill " data-cat="Sashimi" onclick="filterCategory('Sashimi', this)">
+        <span>Sashimi</span>
+        <span class="cat-badge">6</span>
+    </button>
+    <button type="button" class="cat-pill " data-cat="Lunch Specials" onclick="filterCategory('Lunch Specials', this)">
+        <span>Lunch Specials</span>
+        <span class="cat-badge">5</span>
+    </button>
+    <button type="button" class="cat-pill " data-cat="Appetizers &amp; Izakaya" onclick="filterCategory('Appetizers &amp; Izakaya', this)">
+        <span>Appetizers &amp; Izakaya</span>
+        <span class="cat-badge">10</span>
+    </button>
+    <button type="button" class="cat-pill " data-cat="Teppan &amp; Bento" onclick="filterCategory('Teppan &amp; Bento', this)">
+        <span>Teppan &amp; Bento</span>
+        <span class="cat-badge">4</span>
+    </button>
+    <button type="button" class="cat-pill " data-cat="Udon &amp; Soup" onclick="filterCategory('Udon &amp; Soup', this)">
+        <span>Udon &amp; Soup</span>
+        <span class="cat-badge">3</span>
+    </button>
+    <button type="button" class="cat-pill " data-cat="Dessert &amp; Drinks" onclick="filterCategory('Dessert &amp; Drinks', this)">
+        <span>Dessert &amp; Drinks</span>
+        <span class="cat-badge">5</span>
+    </button>
+          </div>
+        </div>
+
+        
+        <div class="menu-layout-container">
+          <div class="menu-pics-column">
+            <h4>Culinary Gallery</h4>
+            <div class="pics-stack">
+              <img src="./images/gallery/01_IMG_8341.jpg" alt="Chiba Sushi Gallery" loading="lazy"><img src="./images/gallery/02_IMG_8320.jpg" alt="Chiba Sushi Gallery" loading="lazy"><img src="./images/gallery/03_IMG_8343.jpg" alt="Chiba Sushi Gallery" loading="lazy"><img src="./images/gallery/04_IMG_8348.jpg" alt="Chiba Sushi Gallery" loading="lazy"><img src="./images/gallery/05_IMG_8318.jpg" alt="Chiba Sushi Gallery" loading="lazy"><img src="./images/gallery/06_IMG_8355.jpg" alt="Chiba Sushi Gallery" loading="lazy"><img src="./images/gallery/07_IMG_8346.jpg" alt="Chiba Sushi Gallery" loading="lazy"><img src="./images/gallery/08_IMG_8316.jpg" alt="Chiba Sushi Gallery" loading="lazy"><img src="./images/gallery/09_IMG_8350.jpg" alt="Chiba Sushi Gallery" loading="lazy"><img src="./images/gallery/10_IMG_8323.jpg" alt="Chiba Sushi Gallery" loading="lazy"><img src="./images/gallery/11_IMG_9047.jpg" alt="Chiba Sushi Gallery" loading="lazy"><img src="./images/gallery/12_IMG_2107.jpg" alt="Chiba Sushi Gallery" loading="lazy"><img src="./images/gallery/13_IMG_8329.jpg" alt="Chiba Sushi Gallery" loading="lazy"><img src="./images/gallery/14_IMG_1712.jpg" alt="Chiba Sushi Gallery" loading="lazy">
+            </div>
+          </div>
+          <div class="menu-food-column">
+            <div class="dish-grid" id="dishGrid">
+                  <article class="dish-card" data-category="Specialty Rolls" data-name="the jackie roll" data-desc="Torch-flamed prawns, tender asparagus tempura, topped with seared beef tataki, scallions and garlic ponzu reduction.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">The Jackie Roll</h3>
+                </div>
+                <p class="dish-desc">Torch-flamed prawns, tender asparagus tempura, topped with seared beef tataki, scallions and garlic ponzu reduction.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$15.95</span>
+                <span class="dish-pieces">8 pcs</span>
+            </div>
+            <div class="dish-badge-col">
+                <span class="badge badge-chef-choice">Chef Choice</span>
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Specialty Rolls" data-name="chiba signature roll" data-desc="Choice of spicy tuna or tiger shrimp tempura, layered with ripe sliced avocado, tobiko, and house unagi glaze.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Chiba Signature Roll</h3>
+                </div>
+                <p class="dish-desc">Choice of spicy tuna or tiger shrimp tempura, layered with ripe sliced avocado, tobiko, and house unagi glaze.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$14.50</span>
+                <span class="dish-pieces">8 pcs</span>
+            </div>
+            <div class="dish-badge-col">
+                <span class="badge badge-award-winner">Award Winner</span>
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Specialty Rolls" data-name="victoria roll" data-desc="Real fresh crab meat, sweet shrimp, velvety cream cheese, crisp cucumber, coated with bright smelt roe.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Victoria Roll</h3>
+                </div>
+                <p class="dish-desc">Real fresh crab meat, sweet shrimp, velvety cream cheese, crisp cucumber, coated with bright smelt roe.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$13.95</span>
+                <span class="dish-pieces">8 pcs</span>
+            </div>
+            <div class="dish-badge-col">
+                <span class="badge badge-local-bc-wild">Local BC Wild</span>
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Specialty Rolls" data-name="pacific salmon roll" data-desc="Spicy crab meat, masago, and avocado roll topped with lightly torched wild BC salmon and citrus mayo.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Pacific Salmon Roll</h3>
+                </div>
+                <p class="dish-desc">Spicy crab meat, masago, and avocado roll topped with lightly torched wild BC salmon and citrus mayo.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$14.95</span>
+                <span class="dish-pieces">8 pcs</span>
+            </div>
+            <div class="dish-badge-col">
+                <span class="badge badge-popular">Popular</span>
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Specialty Rolls" data-name="mango tango roll" data-desc="Light crispy eel tempura, creamy avocado, topped with freshly sliced mango and sweet mango coulis.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Mango Tango Roll</h3>
+                </div>
+                <p class="dish-desc">Light crispy eel tempura, creamy avocado, topped with freshly sliced mango and sweet mango coulis.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$13.50</span>
+                <span class="dish-pieces">8 pcs</span>
+            </div>
+            <div class="dish-badge-col">
+                <span class="badge badge-popular">Popular</span>
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Specialty Rolls" data-name="flame dragon roll" data-desc="Shrimp tempura, avocado, and cucumber inside, draped with whole BBQ freshwater unagi, tobiko, and green onion.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Flame Dragon Roll</h3>
+                </div>
+                <p class="dish-desc">Shrimp tempura, avocado, and cucumber inside, draped with whole BBQ freshwater unagi, tobiko, and green onion.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$16.50</span>
+                <span class="dish-pieces">8 pcs</span>
+            </div>
+            <div class="dish-badge-col">
+                <span class="badge badge-chef-choice">Chef Choice</span>
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Specialty Rolls" data-name="super dynamite roll" data-desc="Double crispy jumbo prawn tempura, avocado, cucumber, masago, and sweet eel drizzle with spicy mayo.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Super Dynamite Roll</h3>
+                </div>
+                <p class="dish-desc">Double crispy jumbo prawn tempura, avocado, cucumber, masago, and sweet eel drizzle with spicy mayo.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$12.95</span>
+                <span class="dish-pieces">6 pcs</span>
+            </div>
+            <div class="dish-badge-col">
+                <span class="badge badge-popular">Popular</span>
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Specialty Rolls" data-name="crispy sushi pizza" data-desc="Pan-crisped sushi rice cake topped with spicy chopped salmon or tuna, creamy avocado, tobiko, and savory sauces.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Crispy Sushi Pizza</h3>
+                </div>
+                <p class="dish-desc">Pan-crisped sushi rice cake topped with spicy chopped salmon or tuna, creamy avocado, tobiko, and savory sauces.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$12.50</span>
+                <span class="dish-pieces">6 wedges</span>
+            </div>
+            <div class="dish-badge-col">
+                <span class="badge badge-popular">Popular</span>
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Specialty Rolls" data-name="canuck roll" data-desc="California base crowned with chef&#x27;s rainbow assortment of salmon, albacore tuna, ebi, and avocado.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Canuck Roll</h3>
+                </div>
+                <p class="dish-desc">California base crowned with chef&#x27;s rainbow assortment of salmon, albacore tuna, ebi, and avocado.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$15.50</span>
+                <span class="dish-pieces">8 pcs</span>
+            </div>
+            <div class="dish-badge-col">
+                
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Specialty Rolls" data-name="real crab california roll" data-desc="Fresh Dungeness crab meat mixed with Japanese mayo, fresh avocado, and crisp seedless cucumber.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Real Crab California Roll</h3>
+                </div>
+                <p class="dish-desc">Fresh Dungeness crab meat mixed with Japanese mayo, fresh avocado, and crisp seedless cucumber.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$10.95</span>
+                <span class="dish-pieces">8 pcs</span>
+            </div>
+            <div class="dish-badge-col">
+                <span class="badge badge-local-bc-wild">Local BC Wild</span>
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Aburi Oshi &amp; Nigiri" data-name="b.c. wild sockeye salmon oshi" data-desc="Pressed box sushi topped with wild sockeye salmon, house-made creamy Japanese sauce, and flame-seared to perfection with serrano slice.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">B.C. Wild Sockeye Salmon Oshi</h3>
+                </div>
+                <p class="dish-desc">Pressed box sushi topped with wild sockeye salmon, house-made creamy Japanese sauce, and flame-seared to perfection with serrano slice.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$16.95</span>
+                <span class="dish-pieces">6 pcs</span>
+            </div>
+            <div class="dish-badge-col">
+                <span class="badge badge-award-winner">Award Winner</span>
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Aburi Oshi &amp; Nigiri" data-name="aburi albacore tuna oshi" data-desc="Pressed sushi featuring tender Pacific albacore tuna, grated ginger glaze, and flame-torched aroma.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Aburi Albacore Tuna Oshi</h3>
+                </div>
+                <p class="dish-desc">Pressed sushi featuring tender Pacific albacore tuna, grated ginger glaze, and flame-torched aroma.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$15.95</span>
+                <span class="dish-pieces">6 pcs</span>
+            </div>
+            <div class="dish-badge-col">
+                <span class="badge badge-chef-choice">Chef Choice</span>
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Aburi Oshi &amp; Nigiri" data-name="assorted aburi nigiri set" data-desc="8 pieces of flame-seared nigiri: wild salmon, bluefin tuna, hotate scallop, unagi, hamachi, and botan ebi with artisan glazes.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Assorted Aburi Nigiri Set</h3>
+                </div>
+                <p class="dish-desc">8 pieces of flame-seared nigiri: wild salmon, bluefin tuna, hotate scallop, unagi, hamachi, and botan ebi with artisan glazes.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$21.95</span>
+                <span class="dish-pieces">8 pcs</span>
+            </div>
+            <div class="dish-badge-col">
+                <span class="badge badge-chef-choice">Chef Choice</span>
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Aburi Oshi &amp; Nigiri" data-name="bluefin otoro nigiri" data-desc="Melts on your tongue with rich marbled natural fats, freshly grated wasabi.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Bluefin Otoro Nigiri</h3>
+                </div>
+                <p class="dish-desc">Melts on your tongue with rich marbled natural fats, freshly grated wasabi.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$9.50</span>
+                <span class="dish-pieces">2 pcs</span>
+            </div>
+            <div class="dish-badge-col">
+                <span class="badge badge-chef-choice">Chef Choice</span>
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Aburi Oshi &amp; Nigiri" data-name="hotate scallop nigiri" data-desc="Sweet Pacific sea scallop, brushed with nikiri shoyu and lime zest.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Hotate Scallop Nigiri</h3>
+                </div>
+                <p class="dish-desc">Sweet Pacific sea scallop, brushed with nikiri shoyu and lime zest.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$7.50</span>
+                <span class="dish-pieces">2 pcs</span>
+            </div>
+            <div class="dish-badge-col">
+                
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Aburi Oshi &amp; Nigiri" data-name="bbq unagi nigiri" data-desc="Warm caramelized freshwater eel with sweet kabayaki sauce and toasted sesame.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">BBQ Unagi Nigiri</h3>
+                </div>
+                <p class="dish-desc">Warm caramelized freshwater eel with sweet kabayaki sauce and toasted sesame.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$6.95</span>
+                <span class="dish-pieces">2 pcs</span>
+            </div>
+            <div class="dish-badge-col">
+                
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Sashimi" data-name="chiba deluxe chef&#x27;s sashimi" data-desc="7 varieties of the day&#x27;s finest ocean catch (18 pcs): wild sockeye, bluefin, hamachi, octopus, hokkigai, scallop &amp; sweet prawn.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Chiba Deluxe Chef&#x27;s Sashimi</h3>
+                </div>
+                <p class="dish-desc">7 varieties of the day&#x27;s finest ocean catch (18 pcs): wild sockeye, bluefin, hamachi, octopus, hokkigai, scallop &amp; sweet prawn.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$32.95</span>
+                <span class="dish-pieces">18 pcs</span>
+            </div>
+            <div class="dish-badge-col">
+                <span class="badge badge-award-winner">Award Winner</span>
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Sashimi" data-name="wild b.c. sockeye salmon sashimi" data-desc="Ruby red, buttery and rich wild salmon harvested from British Columbia waters.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Wild B.C. Sockeye Salmon Sashimi</h3>
+                </div>
+                <p class="dish-desc">Ruby red, buttery and rich wild salmon harvested from British Columbia waters.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$17.50</span>
+                <span class="dish-pieces">8 pcs</span>
+            </div>
+            <div class="dish-badge-col">
+                <span class="badge badge-local-bc-wild">Local BC Wild</span>
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Sashimi" data-name="spicy wild salmon sashimi" data-desc="8 pieces of prime wild salmon tossed in our signature chili sesame vinaigrette and cucumber strings.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Spicy Wild Salmon Sashimi</h3>
+                </div>
+                <p class="dish-desc">8 pieces of prime wild salmon tossed in our signature chili sesame vinaigrette and cucumber strings.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$18.50</span>
+                <span class="dish-pieces">8 pcs</span>
+            </div>
+            <div class="dish-badge-col">
+                <span class="badge badge-spicy">Spicy</span>
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Sashimi" data-name="yellowtail (hamachi) sashimi" data-desc="Delicate Japanese amberjack with clean sweetness and luscious texture.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Yellowtail (Hamachi) Sashimi</h3>
+                </div>
+                <p class="dish-desc">Delicate Japanese amberjack with clean sweetness and luscious texture.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$18.95</span>
+                <span class="dish-pieces">7 pcs</span>
+            </div>
+            <div class="dish-badge-col">
+                
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Sashimi" data-name="tuna &amp; salmon sashimi duo" data-desc="Four generous slices of wild sockeye salmon and four slices of Pacific albacore tuna.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Tuna &amp; Salmon Sashimi Duo</h3>
+                </div>
+                <p class="dish-desc">Four generous slices of wild sockeye salmon and four slices of Pacific albacore tuna.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$16.95</span>
+                <span class="dish-pieces">8 pcs</span>
+            </div>
+            <div class="dish-badge-col">
+                
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Sashimi" data-name="tako (octopus) sashimi" data-desc="Steamed tender Pacific octopus sliced thin with sweet ponzu and daikon.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Tako (Octopus) Sashimi</h3>
+                </div>
+                <p class="dish-desc">Steamed tender Pacific octopus sliced thin with sweet ponzu and daikon.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$14.95</span>
+                <span class="dish-pieces">7 pcs</span>
+            </div>
+            <div class="dish-badge-col">
+                
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Lunch Specials" data-name="chiba bento box combo" data-desc="Includes Miso Soup, crispy Assorted Tempura, choice of Teriyaki (Chicken/Beef/Sesame), green salad, plus 3 pcs California roll and 3 pcs Nigiri.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Chiba Bento Box Combo</h3>
+                </div>
+                <p class="dish-desc">Includes Miso Soup, crispy Assorted Tempura, choice of Teriyaki (Chicken/Beef/Sesame), green salad, plus 3 pcs California roll and 3 pcs Nigiri.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$16.95</span>
+                <span class="dish-pieces">Complete Meal</span>
+            </div>
+            <div class="dish-badge-col">
+                <span class="badge badge-popular">Popular</span>
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Lunch Specials" data-name="maui teriyaki bowl" data-desc="Sautéed chicken, tender beef, or juicy tiger shrimp with sweet bell peppers, sweet onion, and house teriyaki glaze over steamed rice.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Maui Teriyaki Bowl</h3>
+                </div>
+                <p class="dish-desc">Sautéed chicken, tender beef, or juicy tiger shrimp with sweet bell peppers, sweet onion, and house teriyaki glaze over steamed rice.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$11.95</span>
+                <span class="dish-pieces"></span>
+            </div>
+            <div class="dish-badge-col">
+                <span class="badge badge-chef-choice">Chef Choice</span>
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Lunch Specials" data-name="mixed tempura udon lunch" data-desc="Steaming hot dashi broth with thick sanuki udon noodles, accompanied by 2 crispy prawn tempura and vegetable tempura.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Mixed Tempura Udon Lunch</h3>
+                </div>
+                <p class="dish-desc">Steaming hot dashi broth with thick sanuki udon noodles, accompanied by 2 crispy prawn tempura and vegetable tempura.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$11.95</span>
+                <span class="dish-pieces"></span>
+            </div>
+            <div class="dish-badge-col">
+                
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Lunch Specials" data-name="classic donburi selection" data-desc="Choice of Chicken Karaage Don, Crispy Pork Katsu Don, or Beef Sukiyaki Don over rice with simmered egg and sweet onions. Includes miso soup.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Classic Donburi Selection</h3>
+                </div>
+                <p class="dish-desc">Choice of Chicken Karaage Don, Crispy Pork Katsu Don, or Beef Sukiyaki Don over rice with simmered egg and sweet onions. Includes miso soup.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$10.95</span>
+                <span class="dish-pieces"></span>
+            </div>
+            <div class="dish-badge-col">
+                
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Lunch Specials" data-name="lunch duo roll combo" data-desc="Choice of any two classic rolls (California, Spicy Tuna, Yam Tempura, Salmon Avocado) served with green salad and miso soup.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Lunch Duo Roll Combo</h3>
+                </div>
+                <p class="dish-desc">Choice of any two classic rolls (California, Spicy Tuna, Yam Tempura, Salmon Avocado) served with green salad and miso soup.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$12.95</span>
+                <span class="dish-pieces"></span>
+            </div>
+            <div class="dish-badge-col">
+                
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Appetizers &amp; Izakaya" data-name="agedashi tofu" data-desc="Golden crisp organic tofu cubes bathed in warm dashi broth, topped with bonito shavings, grated daikon, and scallions.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Agedashi Tofu</h3>
+                </div>
+                <p class="dish-desc">Golden crisp organic tofu cubes bathed in warm dashi broth, topped with bonito shavings, grated daikon, and scallions.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$5.50</span>
+                <span class="dish-pieces"></span>
+            </div>
+            <div class="dish-badge-col">
+                <span class="badge badge-vegetarian">Vegetarian</span>
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Appetizers &amp; Izakaya" data-name="chiba monkeys" data-desc="Panko breaded and flash-fried spicy tuna, imitation crab, and avocado balls drizzled with unagi glaze and spicy aioli.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Chiba Monkeys</h3>
+                </div>
+                <p class="dish-desc">Panko breaded and flash-fried spicy tuna, imitation crab, and avocado balls drizzled with unagi glaze and spicy aioli.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$8.00</span>
+                <span class="dish-pieces"></span>
+            </div>
+            <div class="dish-badge-col">
+                <span class="badge badge-popular">Popular</span>
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Appetizers &amp; Izakaya" data-name="handmade pan-fried gyoza" data-desc="4 pieces of house-crafted Japanese dumplings stuffed with seasoned pork, garlic chives, and cabbage with dipping sauce.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Handmade Pan-Fried Gyoza</h3>
+                </div>
+                <p class="dish-desc">4 pieces of house-crafted Japanese dumplings stuffed with seasoned pork, garlic chives, and cabbage with dipping sauce.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$5.00</span>
+                <span class="dish-pieces">4 pcs</span>
+            </div>
+            <div class="dish-badge-col">
+                <span class="badge badge-popular">Popular</span>
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Appetizers &amp; Izakaya" data-name="osaka takoyaki" data-desc="6 crispy golden octopus-filled batter balls topped with Japanese mayo, bulldog sauce, aonori seaweed, and dancing bonito flakes.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Osaka Takoyaki</h3>
+                </div>
+                <p class="dish-desc">6 crispy golden octopus-filled batter balls topped with Japanese mayo, bulldog sauce, aonori seaweed, and dancing bonito flakes.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$6.50</span>
+                <span class="dish-pieces">6 pcs</span>
+            </div>
+            <div class="dish-badge-col">
+                
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Appetizers &amp; Izakaya" data-name="broiled black cod miso" data-desc="Silky black cod marinated in sweet Saikyo white miso for 48 hours and gently broiled until caramelized.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Broiled Black Cod Miso</h3>
+                </div>
+                <p class="dish-desc">Silky black cod marinated in sweet Saikyo white miso for 48 hours and gently broiled until caramelized.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$9.50</span>
+                <span class="dish-pieces"></span>
+            </div>
+            <div class="dish-badge-col">
+                <span class="badge badge-chef-choice">Chef Choice</span>
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Appetizers &amp; Izakaya" data-name="beef tataki with ponzu" data-desc="Thinly sliced rare AAA blue sirloin served with shaved sweet onions, momiji oroshi, and house citrus ponzu.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Beef Tataki with Ponzu</h3>
+                </div>
+                <p class="dish-desc">Thinly sliced rare AAA blue sirloin served with shaved sweet onions, momiji oroshi, and house citrus ponzu.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$9.50</span>
+                <span class="dish-pieces"></span>
+            </div>
+            <div class="dish-badge-col">
+                <span class="badge badge-popular">Popular</span>
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Appetizers &amp; Izakaya" data-name="oyster motoyaki" data-desc="Oven-baked juicy oysters blanketed in our rich seasoned Japanese mayo reduction with spinach and mushrooms.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Oyster Motoyaki</h3>
+                </div>
+                <p class="dish-desc">Oven-baked juicy oysters blanketed in our rich seasoned Japanese mayo reduction with spinach and mushrooms.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$6.50</span>
+                <span class="dish-pieces"></span>
+            </div>
+            <div class="dish-badge-col">
+                
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Appetizers &amp; Izakaya" data-name="crispy soft shell crab" data-desc="Whole soft shell crab lightly floured, flash-fried golden and crisp, served with zesty dipping ponzu.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Crispy Soft Shell Crab</h3>
+                </div>
+                <p class="dish-desc">Whole soft shell crab lightly floured, flash-fried golden and crisp, served with zesty dipping ponzu.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$9.00</span>
+                <span class="dish-pieces"></span>
+            </div>
+            <div class="dish-badge-col">
+                
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Appetizers &amp; Izakaya" data-name="steamed edamame" data-desc="Steamed young green soy beans dusted with coarse Pacific sea salt.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Steamed Edamame</h3>
+                </div>
+                <p class="dish-desc">Steamed young green soy beans dusted with coarse Pacific sea salt.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$4.50</span>
+                <span class="dish-pieces"></span>
+            </div>
+            <div class="dish-badge-col">
+                <span class="badge badge-vegetarian">Vegetarian</span>
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Appetizers &amp; Izakaya" data-name="pumpkin croquette" data-desc="Deep-fried mashed pumpkin kabocha patty with a super crispy panko shell.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Pumpkin Croquette</h3>
+                </div>
+                <p class="dish-desc">Deep-fried mashed pumpkin kabocha patty with a super crispy panko shell.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$2.50</span>
+                <span class="dish-pieces"></span>
+            </div>
+            <div class="dish-badge-col">
+                <span class="badge badge-vegetarian">Vegetarian</span>
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Teppan &amp; Bento" data-name="sizzling beef rib teppan" data-desc="Marinated bone-in sweet soy short ribs served over a hot iron skillet with charred onions and sesame.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Sizzling Beef Rib Teppan</h3>
+                </div>
+                <p class="dish-desc">Marinated bone-in sweet soy short ribs served over a hot iron skillet with charred onions and sesame.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$15.95</span>
+                <span class="dish-pieces"></span>
+            </div>
+            <div class="dish-badge-col">
+                <span class="badge badge-popular">Popular</span>
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Teppan &amp; Bento" data-name="chicken &amp; beef teriyaki combo" data-desc="Char-grilled chicken breast and tender beef sirloin glazed in homemade teriyaki sauce with steamed rice.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Chicken &amp; Beef Teriyaki Combo</h3>
+                </div>
+                <p class="dish-desc">Char-grilled chicken breast and tender beef sirloin glazed in homemade teriyaki sauce with steamed rice.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$14.95</span>
+                <span class="dish-pieces"></span>
+            </div>
+            <div class="dish-badge-col">
+                
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Teppan &amp; Bento" data-name="assorted seafood &amp; vegetable tempura" data-desc="4 succulent tiger prawns, sweet yam, kabocha pumpkin, zucchini, and eggplant fried in light featherweight batter.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Assorted Seafood &amp; Vegetable Tempura</h3>
+                </div>
+                <p class="dish-desc">4 succulent tiger prawns, sweet yam, kabocha pumpkin, zucchini, and eggplant fried in light featherweight batter.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$13.95</span>
+                <span class="dish-pieces"></span>
+            </div>
+            <div class="dish-badge-col">
+                
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Teppan &amp; Bento" data-name="chicken katsu dinner" data-desc="Crunchy Japanese panko-breaded tender chicken cutlet with shredded cabbage, tonkatsu sauce, and miso soup.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Chicken Katsu Dinner</h3>
+                </div>
+                <p class="dish-desc">Crunchy Japanese panko-breaded tender chicken cutlet with shredded cabbage, tonkatsu sauce, and miso soup.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$13.50</span>
+                <span class="dish-pieces"></span>
+            </div>
+            <div class="dish-badge-col">
+                
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Udon &amp; Soup" data-name="yaki udon stir-fry" data-desc="Wok-tossed Japanese thick udon noodles with sliced chicken or beef, crisp cabbage, carrots, and savory dashi shoyu.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Yaki Udon Stir-Fry</h3>
+                </div>
+                <p class="dish-desc">Wok-tossed Japanese thick udon noodles with sliced chicken or beef, crisp cabbage, carrots, and savory dashi shoyu.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$11.95</span>
+                <span class="dish-pieces"></span>
+            </div>
+            <div class="dish-badge-col">
+                
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Udon &amp; Soup" data-name="traditional miso soup" data-desc="Authentic fermented white miso broth with silken organic tofu, wakame seaweed, and chopped spring scallions.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Traditional Miso Soup</h3>
+                </div>
+                <p class="dish-desc">Authentic fermented white miso broth with silken organic tofu, wakame seaweed, and chopped spring scallions.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$2.50</span>
+                <span class="dish-pieces"></span>
+            </div>
+            <div class="dish-badge-col">
+                <span class="badge badge-vegetarian">Vegetarian</span>
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Udon &amp; Soup" data-name="beef udon noodle soup" data-desc="Simmered sweet soy beef slices, thick chewy wheat noodles in fragrant piping hot bonito broth.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Beef Udon Noodle Soup</h3>
+                </div>
+                <p class="dish-desc">Simmered sweet soy beef slices, thick chewy wheat noodles in fragrant piping hot bonito broth.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$10.95</span>
+                <span class="dish-pieces"></span>
+            </div>
+            <div class="dish-badge-col">
+                
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Dessert &amp; Drinks" data-name="matcha mascarpone cheesecake" data-desc="Velvety Uji green tea mascarpone cream over a buttery graham crust, garnished with red bean sweet paste.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Matcha Mascarpone Cheesecake</h3>
+                </div>
+                <p class="dish-desc">Velvety Uji green tea mascarpone cream over a buttery graham crust, garnished with red bean sweet paste.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$6.95</span>
+                <span class="dish-pieces"></span>
+            </div>
+            <div class="dish-badge-col">
+                <span class="badge badge-popular">Popular</span>
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Dessert &amp; Drinks" data-name="japanese mochi ice cream trio" data-desc="Three soft sweet rice dough spheres filled with premium ice cream: Matcha, Mango, and Toasted Black Sesame.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Japanese Mochi Ice Cream Trio</h3>
+                </div>
+                <p class="dish-desc">Three soft sweet rice dough spheres filled with premium ice cream: Matcha, Mango, and Toasted Black Sesame.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$5.50</span>
+                <span class="dish-pieces"></span>
+            </div>
+            <div class="dish-badge-col">
+                
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Dessert &amp; Drinks" data-name="asahi super dry draft beer (500ml)" data-desc="Crisp, clean, dry refreshing Japanese draft beer served ice-cold in a chilled glass.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Asahi Super Dry Draft Beer (500ml)</h3>
+                </div>
+                <p class="dish-desc">Crisp, clean, dry refreshing Japanese draft beer served ice-cold in a chilled glass.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$7.95</span>
+                <span class="dish-pieces"></span>
+            </div>
+            <div class="dish-badge-col">
+                
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Dessert &amp; Drinks" data-name="hakutsuru junmai ginjo sake (300ml)" data-desc="Smooth, floral and clean premium Japanese sake. Served chilled or warmed upon request.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Hakutsuru Junmai Ginjo Sake (300ml)</h3>
+                </div>
+                <p class="dish-desc">Smooth, floral and clean premium Japanese sake. Served chilled or warmed upon request.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$15.50</span>
+                <span class="dish-pieces"></span>
+            </div>
+            <div class="dish-badge-col">
+                
+            </div>
+        </div>
+    </article>    <article class="dish-card" data-category="Dessert &amp; Drinks" data-name="roasted genmaicha green tea" data-desc="Aromatic Japanese green tea blended with toasted brown rice grains. Unlimited refills.">
+        <div class="dish-content">
+            <div class="dish-info">
+                <div class="dish-titles">
+                    <h3 class="dish-name">Roasted Genmaicha Green Tea</h3>
+                </div>
+                <p class="dish-desc">Aromatic Japanese green tea blended with toasted brown rice grains. Unlimited refills.</p>
+            </div>
+            <div class="dish-price-middle">
+                <span class="dish-price">$2.00</span>
+                <span class="dish-pieces"></span>
+            </div>
+            <div class="dish-badge-col">
+                
+            </div>
+        </div>
+    </article>
+            </div>
+          </div>
+        </div>
+</section>
+
+    
+
+    <!-- PHOTO GALLERY SECTION -->
+    <section class="section-padding gallery-section" id="gallery">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">ギャラリー • VISUAL SHOWCASE</span>
+          <h2 class="section-title">The Chiba Experience in Photos</h2>
+          <p class="section-desc">
+            Take a glimpse into our vibrant dishes, flame-seared artistry, fresh sashimi platters, and inviting dining ambiance.
+          </p>
+        </div>
+
+        <div class="gallery-toolbar">
+          
+    <button type="button" class="gallery-pill active" data-gcat="All">
+        <span>All</span>
+    </button>
+    <button type="button" class="gallery-pill " data-gcat="Special Rolls">
+        <span>Special Rolls</span>
+    </button>
+    <button type="button" class="gallery-pill " data-gcat="Aburi Oshi">
+        <span>Aburi Oshi</span>
+    </button>
+    <button type="button" class="gallery-pill " data-gcat="Sashimi &amp; Nigiri">
+        <span>Sashimi &amp; Nigiri</span>
+    </button>
+    <button type="button" class="gallery-pill " data-gcat="Hot Kitchen">
+        <span>Hot Kitchen</span>
+    </button>
+    <button type="button" class="gallery-pill " data-gcat="Restaurant &amp; Bar">
+        <span>Restaurant &amp; Bar</span>
+    </button>
+        </div>
+
+        <div class="gallery-grid" id="galleryGrid">
+          
+    <div class="gallery-item" data-cat="Special Rolls" data-idx="0">
+        <img src="./images/gallery/01_IMG_8341.jpg" alt="Artisanal Special Sushi Platter" loading="lazy" class="gallery-img">
+        <div class="gallery-overlay">
+            <span class="gallery-cat">Special Rolls</span>
+            <h4 class="gallery-title">Artisanal Special Sushi Platter</h4>
+            <p class="gallery-sub">A showcase of flame-torched signature rolls, fresh nigiri and tobiko garnish</p>
+            <span class="gallery-view-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+                View Photo
+            </span>
+        </div>
+    </div>
+    <div class="gallery-item" data-cat="Aburi Oshi" data-idx="1">
+        <img src="./images/gallery/02_IMG_8320.jpg" alt="Seared Aburi Oshi Wild Salmon" loading="lazy" class="gallery-img">
+        <div class="gallery-overlay">
+            <span class="gallery-cat">Aburi Oshi</span>
+            <h4 class="gallery-title">Seared Aburi Oshi Wild Salmon</h4>
+            <p class="gallery-sub">BC wild sockeye salmon pressed sushi with house glaze and jalapeño accents</p>
+            <span class="gallery-view-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+                View Photo
+            </span>
+        </div>
+    </div>
+    <div class="gallery-item" data-cat="Sashimi &amp; Nigiri" data-idx="2">
+        <img src="./images/gallery/03_IMG_8343.jpg" alt="Deluxe Sashimi Selection" loading="lazy" class="gallery-img">
+        <div class="gallery-overlay">
+            <span class="gallery-cat">Sashimi &amp; Nigiri</span>
+            <h4 class="gallery-title">Deluxe Sashimi Selection</h4>
+            <p class="gallery-sub">Thick-cut fresh Pacific tuna, sockeye salmon, and sweet botan ebi</p>
+            <span class="gallery-view-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+                View Photo
+            </span>
+        </div>
+    </div>
+    <div class="gallery-item" data-cat="Special Rolls" data-idx="3">
+        <img src="./images/gallery/04_IMG_8348.jpg" alt="Chiba Signature Rolls" loading="lazy" class="gallery-img">
+        <div class="gallery-overlay">
+            <span class="gallery-cat">Special Rolls</span>
+            <h4 class="gallery-title">Chiba Signature Rolls</h4>
+            <p class="gallery-sub">Drizzled with our secret savory unagi reduction and crisp tempura flakes</p>
+            <span class="gallery-view-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+                View Photo
+            </span>
+        </div>
+    </div>
+    <div class="gallery-item" data-cat="Special Rolls" data-idx="4">
+        <img src="./images/gallery/05_IMG_8318.jpg" alt="The Jackie Roll" loading="lazy" class="gallery-img">
+        <div class="gallery-overlay">
+            <span class="gallery-cat">Special Rolls</span>
+            <h4 class="gallery-title">The Jackie Roll</h4>
+            <p class="gallery-sub">Torch-flamed prawns, tender asparagus tempura, and succulent beef tataki top</p>
+            <span class="gallery-view-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+                View Photo
+            </span>
+        </div>
+    </div>
+    <div class="gallery-item" data-cat="Hot Kitchen" data-idx="5">
+        <img src="./images/gallery/06_IMG_8355.jpg" alt="Crisp Panko Karaage &amp; Starters" loading="lazy" class="gallery-img">
+        <div class="gallery-overlay">
+            <span class="gallery-cat">Hot Kitchen</span>
+            <h4 class="gallery-title">Crisp Panko Karaage &amp; Starters</h4>
+            <p class="gallery-sub">Freshly prepared izakaya bites with dipping sauces and citrus</p>
+            <span class="gallery-view-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+                View Photo
+            </span>
+        </div>
+    </div>
+    <div class="gallery-item" data-cat="Restaurant &amp; Bar" data-idx="6">
+        <img src="./images/gallery/07_IMG_8346.jpg" alt="Modern Dining Room Ambiance" loading="lazy" class="gallery-img">
+        <div class="gallery-overlay">
+            <span class="gallery-cat">Restaurant &amp; Bar</span>
+            <h4 class="gallery-title">Modern Dining Room Ambiance</h4>
+            <p class="gallery-sub">Warm, welcoming atmosphere at our 2630 Quadra Street dining room</p>
+            <span class="gallery-view-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+                View Photo
+            </span>
+        </div>
+    </div>
+    <div class="gallery-item" data-cat="Sashimi &amp; Nigiri" data-idx="7">
+        <img src="./images/gallery/08_IMG_8316.jpg" alt="Fresh Nigiri Showcase" loading="lazy" class="gallery-img">
+        <div class="gallery-overlay">
+            <span class="gallery-cat">Sashimi &amp; Nigiri</span>
+            <h4 class="gallery-title">Fresh Nigiri Showcase</h4>
+            <p class="gallery-sub">Hand-pressed nigiri honoring authentic Edo-style balance</p>
+            <span class="gallery-view-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+                View Photo
+            </span>
+        </div>
+    </div>
+    <div class="gallery-item" data-cat="Special Rolls" data-idx="8">
+        <img src="./images/gallery/09_IMG_8350.jpg" alt="Crispy Sushi Pizza &amp; Specialty Maki" loading="lazy" class="gallery-img">
+        <div class="gallery-overlay">
+            <span class="gallery-cat">Special Rolls</span>
+            <h4 class="gallery-title">Crispy Sushi Pizza &amp; Specialty Maki</h4>
+            <p class="gallery-sub">Crispy pan-seared rice crust topped with spicy sashimi and avocado</p>
+            <span class="gallery-view-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+                View Photo
+            </span>
+        </div>
+    </div>
+    <div class="gallery-item" data-cat="Hot Kitchen" data-idx="9">
+        <img src="./images/gallery/10_IMG_8323.jpg" alt="Sizzling Teppanyaki Platter" loading="lazy" class="gallery-img">
+        <div class="gallery-overlay">
+            <span class="gallery-cat">Hot Kitchen</span>
+            <h4 class="gallery-title">Sizzling Teppanyaki Platter</h4>
+            <p class="gallery-sub">Charred sweet teriyaki steak and chicken served with stir-fried garden vegetables</p>
+            <span class="gallery-view-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+                View Photo
+            </span>
+        </div>
+    </div>
+    <div class="gallery-item" data-cat="Sashimi &amp; Nigiri" data-idx="10">
+        <img src="./images/gallery/11_IMG_9047.jpg" alt="Chef&#x27;s Omakase Assortment" loading="lazy" class="gallery-img">
+        <div class="gallery-overlay">
+            <span class="gallery-cat">Sashimi &amp; Nigiri</span>
+            <h4 class="gallery-title">Chef&#x27;s Omakase Assortment</h4>
+            <p class="gallery-sub">Seasonal varieties direct from Pacific suppliers and Tsukiji fish markets</p>
+            <span class="gallery-view-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+                View Photo
+            </span>
+        </div>
+    </div>
+    <div class="gallery-item" data-cat="Restaurant &amp; Bar" data-idx="11">
+        <img src="./images/gallery/12_IMG_2107.jpg" alt="Quadra Village Restaurant Interior" loading="lazy" class="gallery-img">
+        <div class="gallery-overlay">
+            <span class="gallery-cat">Restaurant &amp; Bar</span>
+            <h4 class="gallery-title">Quadra Village Restaurant Interior</h4>
+            <p class="gallery-sub">Cozy booths and attentive service since our move in June 2021</p>
+            <span class="gallery-view-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+                View Photo
+            </span>
+        </div>
+    </div>
+    <div class="gallery-item" data-cat="Hot Kitchen" data-idx="12">
+        <img src="./images/gallery/13_IMG_8329.jpg" alt="House Tempura &amp; Udon" loading="lazy" class="gallery-img">
+        <div class="gallery-overlay">
+            <span class="gallery-cat">Hot Kitchen</span>
+            <h4 class="gallery-title">House Tempura &amp; Udon</h4>
+            <p class="gallery-sub">Golden battered tiger prawns and light seasonal vegetable tempura</p>
+            <span class="gallery-view-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+                View Photo
+            </span>
+        </div>
+    </div>
+    <div class="gallery-item" data-cat="Special Rolls" data-idx="13">
+        <img src="./images/gallery/14_FullSizeRender.jpg" alt="Grand Banquet Sushi Boat" loading="lazy" class="gallery-img">
+        <div class="gallery-overlay">
+            <span class="gallery-cat">Special Rolls</span>
+            <h4 class="gallery-title">Grand Banquet Sushi Boat</h4>
+            <p class="gallery-sub">A celebratory presentation of rolls, sashimi cuts, and aburi favorites</p>
+            <span class="gallery-view-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+                View Photo
+            </span>
+        </div>
+    </div>
+    <div class="gallery-item" data-cat="Restaurant &amp; Bar" data-idx="14">
+        <img src="./images/gallery/14_IMG_1712.jpg" alt="Bar Seating &amp; Craft Drinks" loading="lazy" class="gallery-img">
+        <div class="gallery-overlay">
+            <span class="gallery-cat">Restaurant &amp; Bar</span>
+            <h4 class="gallery-title">Bar Seating &amp; Craft Drinks</h4>
+            <p class="gallery-sub">Pair your meal with premium chilled sake and Japanese draft beer</p>
+            <span class="gallery-view-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+                View Photo
+            </span>
+        </div>
+    </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="section-padding testimonials-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">お客様の声 • DINER REVIEWS</span>
+          <h2 class="section-title">Loved by Victoria Locals &amp; Visitors</h2>
+          <p class="section-desc">
+            Read what our wonderful guests have to say about their dining experiences with us.
+          </p>
+        </div>
+
+        <div class="testimonials-grid">
+          
+    <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="test-text">"Hands down our absolute favorite sushi in Victoria! The Jackie Roll and Wild Sockeye Oshi are sublime. The fish is always ridiculously fresh and generous portions."</p>
+        <div class="test-author">
+            <span class="author-name">Jessica L.</span>
+            <span class="author-source">Google Local Guide</span>
+        </div>
+    </div>
+    <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="test-text">"Chiba Sushi has been a staple for us since 2007. The new Quadra Village spot is cozy, welcoming, and the Quality Business Award for Best Sushi was so thoroughly deserved!"</p>
+        <div class="test-author">
+            <span class="author-name">David M.</span>
+            <span class="author-source">TripAdvisor Reviewer</span>
+        </div>
+    </div>
+    <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="test-text">"Authentic flavors, friendly warm smiles, and reasonable pricing compared to downtown spots. The agedashi tofu and flame dragon roll are unbeatable."</p>
+        <div class="test-author">
+            <span class="author-name">Kaori T.</span>
+            <span class="author-source">Verified Diner</span>
+        </div>
+    </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOURS & LOCATION SECTION -->
+    <section class="section-padding location-section" id="location">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">店舗情報 • VISIT US</span>
+          <h2 class="section-title">Hours, Location &amp; Directions</h2>
+          <p class="section-desc">
+            Conveniently located in Victoria's Quadra Village with convenient neighborhood and street parking.
+          </p>
+        </div>
+
+        <div class="location-grid">
+          <div class="location-card">
+            <div>
+              <div id="liveStatusBadge" class="status-badge status-open">
+                <span class="status-dot"></span>
+                <span id="liveStatusText">Checking Opening Status...</span>
+              </div>
+              <h3 style="font-family: var(--font-display); font-size: 20px; color: #fff; margin-top: 14px; margin-bottom: 6px;">Opening Hours</h3>
+              <p style="font-size: 13px; color: var(--text-muted);">Dine-In, Takeout Pickup, and Delivery</p>
+            </div>
+
+            <table class="hours-table">
+              <tbody>
+                <tr>
+                  <td>Wednesday – Friday Lunch</td>
+                  <td>11:30 AM – 2:00 PM</td>
+                </tr>
+                <tr>
+                  <td>Monday – Friday Dinner</td>
+                  <td>4:30 PM – 9:00 PM</td>
+                </tr>
+                <tr>
+                  <td>Saturday – Sunday Dinner</td>
+                  <td>4:00 PM – 9:30 PM</td>
+                </tr>
+                <tr>
+                  <td>Tuesday</td>
+                  <td>Closed</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div style="border-top: 1px solid var(--border-subtle); padding-top: 20px;">
+              <h4 style="font-size: 14px; color: var(--gold-light); margin-bottom: 6px;">Restaurant Address</h4>
+              <p style="font-size: 14px; color: #fff; line-height: 1.5;">
+                2630 Quadra Street<br>
+                Victoria, BC V8T 4E4, Canada
+              </p>
+              <p style="font-size: 12px; color: var(--text-dim); margin-top: 4px;">
+                Quadra Village (Between Kings Rd &amp; Hillside Ave)
+              </p>
+            </div>
+
+            <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+              <a href="https://maps.google.com/?q=2630+Quadra+Street,+Victoria,+BC+V8T+4E4" target="_blank" rel="noopener" class="btn btn-gold">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+                <span>Get Directions</span>
+              </a>
+              <a href="tel:250-383-9886" class="btn btn-outline">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <span>Call 250-383-9886</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="map-frame">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2647.0142858805214!2d-123.36155982361664!3d48.43673513028308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x548f749cdbcf68bb%3A0x6b2e1bf7282cb20d!2sChiba%20Sushi%20Restaurant!5e0!3m2!1sen!2sca!4v1710000000000!5m2!1sen!2sca" 
+              width="100%" 
+              height="100%" 
+              style="border:0; min-height: 420px;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  
+    </div>
+  </div>
+
+  <!-- GALLERY LIGHTBOX MODAL -->
+  <div class="lightbox" id="lightboxModal" onclick="closeLightboxOnBackdrop(event)">
+    <div class="lightbox-content">
+      <button type="button" class="lightbox-close" onclick="closeLightbox()" aria-label="Close Lightbox">&times;</button>
+      
+      <button type="button" class="lightbox-nav lightbox-prev" onclick="prevLightbox()" aria-label="Previous Photo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+
+      <img src="" alt="" id="lightboxImg" class="lightbox-img">
+
+      <button type="button" class="lightbox-nav lightbox-next" onclick="nextLightbox()" aria-label="Next Photo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+
+      <div class="lightbox-caption">
+        <h4 id="lightboxTitle"></h4>
+        <p id="lightboxSub"></p>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>CHIBA SUSHI</h3>
+          <p>
+            Authentic Japanese restaurant, seafood &amp; steak in Quadra Village, Victoria, BC. Proudly serving fresh wild Pacific salmon and artisanal sushi rolls since 2007.
+          </p>
+          <div class="footer-socials">
+            <a href="https://www.facebook.com/pages/Chiba-Sushi/761209057241389" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/chiba_sushi/" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#menu">Our Menu</a></li>
+            <li><a href="#story">Our Story</a></li>
+            <li><a href="#gallery">Photo Gallery</a></li>
+            <li></li>
+            <li><a href="#location">Hours &amp; Location</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Ordering</h4>
+          <ul>
+            <li><a href="https://www.qooway.com/olo/en?ChibaSushi&menuid=3" target="_blank" rel="noopener">Direct Online Pickup</a></li>
+            <li><a href="https://www.doordash.com/business/442465/" target="_blank" rel="noopener">DoorDash Delivery</a></li>
+            <li><a href="tel:250-383-9886">Phone Orders (250-383-9886)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <ul>
+            <li style="color: #fff; font-size: 13px;">2630 Quadra Street</li>
+            <li style="color: var(--text-muted); font-size: 13px;">Victoria, BC V8T 4E4</li>
+            <li><a href="tel:250-383-9886" style="color: var(--gold); font-weight: 600;">250-383-9886</a></li>
+            <li style="font-size: 12px; color: var(--text-dim); margin-top: 8px;">Selected Victoria's Best Sushi 2023</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>2630 Quadra Street, Victoria, BC • (250) 383-9886</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- VANILLA JAVASCRIPT (ZERO DEPENDENCIES) -->
+  <script>
+    // Gallery items data for lightbox
+    const galleryData = [{"id": "g1", "src": "./images/gallery/01_IMG_8341.jpg", "title": "Artisanal Special Sushi Platter", "subtitle": "A showcase of flame-torched signature rolls, fresh nigiri and tobiko garnish", "category": "Special Rolls"}, {"id": "g2", "src": "./images/gallery/02_IMG_8320.jpg", "title": "Seared Aburi Oshi Wild Salmon", "subtitle": "BC wild sockeye salmon pressed sushi with house glaze and jalape\u00f1o accents", "category": "Aburi Oshi"}, {"id": "g3", "src": "./images/gallery/03_IMG_8343.jpg", "title": "Deluxe Sashimi Selection", "subtitle": "Thick-cut fresh Pacific tuna, sockeye salmon, and sweet botan ebi", "category": "Sashimi & Nigiri"}, {"id": "g4", "src": "./images/gallery/04_IMG_8348.jpg", "title": "Chiba Signature Rolls", "subtitle": "Drizzled with our secret savory unagi reduction and crisp tempura flakes", "category": "Special Rolls"}, {"id": "g5", "src": "./images/gallery/05_IMG_8318.jpg", "title": "The Jackie Roll", "subtitle": "Torch-flamed prawns, tender asparagus tempura, and succulent beef tataki top", "category": "Special Rolls"}, {"id": "g6", "src": "./images/gallery/06_IMG_8355.jpg", "title": "Crisp Panko Karaage & Starters", "subtitle": "Freshly prepared izakaya bites with dipping sauces and citrus", "category": "Hot Kitchen"}, {"id": "g7", "src": "./images/gallery/07_IMG_8346.jpg", "title": "Modern Dining Room Ambiance", "subtitle": "Warm, welcoming atmosphere at our 2630 Quadra Street dining room", "category": "Restaurant & Bar"}, {"id": "g8", "src": "./images/gallery/08_IMG_8316.jpg", "title": "Fresh Nigiri Showcase", "subtitle": "Hand-pressed nigiri honoring authentic Edo-style balance", "category": "Sashimi & Nigiri"}, {"id": "g9", "src": "./images/gallery/09_IMG_8350.jpg", "title": "Crispy Sushi Pizza & Specialty Maki", "subtitle": "Crispy pan-seared rice crust topped with spicy sashimi and avocado", "category": "Special Rolls"}, {"id": "g10", "src": "./images/gallery/10_IMG_8323.jpg", "title": "Sizzling Teppanyaki Platter", "subtitle": "Charred sweet teriyaki steak and chicken served with stir-fried garden vegetables", "category": "Hot Kitchen"}, {"id": "g11", "src": "./images/gallery/11_IMG_9047.jpg", "title": "Chef's Omakase Assortment", "subtitle": "Seasonal varieties direct from Pacific suppliers and Tsukiji fish markets", "category": "Sashimi & Nigiri"}, {"id": "g12", "src": "./images/gallery/12_IMG_2107.jpg", "title": "Quadra Village Restaurant Interior", "subtitle": "Cozy booths and attentive service since our move in June 2021", "category": "Restaurant & Bar"}, {"id": "g13", "src": "./images/gallery/13_IMG_8329.jpg", "title": "House Tempura & Udon", "subtitle": "Golden battered tiger prawns and light seasonal vegetable tempura", "category": "Hot Kitchen"}, {"id": "g14", "src": "./images/gallery/14_FullSizeRender.jpg", "title": "Grand Banquet Sushi Boat", "subtitle": "A celebratory presentation of rolls, sashimi cuts, and aburi favorites", "category": "Special Rolls"}, {"id": "g15", "src": "./images/gallery/14_IMG_1712.jpg", "title": "Bar Seating & Craft Drinks", "subtitle": "Pair your meal with premium chilled sake and Japanese draft beer", "category": "Restaurant & Bar"}];
+
+    // Hero Slideshow Logic
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.hero-dot');
+    let slideTimer = null;
+
+    function showSlide(index) {
+      if (index >= slides.length) currentSlide = 0;
+      else if (index < 0) currentSlide = slides.length - 1;
+      else currentSlide = index;
+
+      slides.forEach((s, i) => {
+        s.classList.toggle('active', i === currentSlide);
+      });
+      dots.forEach((d, i) => {
+        d.classList.toggle('active', i === currentSlide);
+      });
+    }
+
+    function nextSlide() {
+      showSlide(currentSlide + 1);
+      resetSlideTimer();
+    }
+
+    function prevSlide() {
+      showSlide(currentSlide - 1);
+      resetSlideTimer();
+    }
+
+    function goToSlide(i) {
+      showSlide(i);
+      resetSlideTimer();
+    }
+
+    function startSlideTimer() {
+      slideTimer = setInterval(() => {
+        showSlide(currentSlide + 1);
+      }, 5500);
+    }
+
+    function resetSlideTimer() {
+      clearInterval(slideTimer);
+      startSlideTimer();
+    }
+
+    startSlideTimer();
+
+    // Mobile Menu Toggle
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobileDrawer');
+      drawer.classList.toggle('open');
+    }
+
+    function closeMobileMenu() {
+      const drawer = document.getElementById('mobileDrawer');
+      drawer.classList.remove('open');
+    }
+
+    // Menu Category Filtering & Search
+    let activeCategory = 'All';
+    let searchQuery = '';
+
+    function filterCategory(cat, btn) {
+      activeCategory = cat;
+      document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      applyMenuFilters();
+    }
+
+    function handleMenuSearch() {
+      searchQuery = document.getElementById('menuSearch').value.toLowerCase().trim();
+      applyMenuFilters();
+    }
+
+    function applyMenuFilters() {
+      const cards = document.querySelectorAll('.dish-card');
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+        const cardName = card.getAttribute('data-name');
+        const cardDesc = card.getAttribute('data-desc');
+
+        const matchesCat = (activeCategory === 'All' || cardCat === activeCategory);
+        const matchesSearch = (!searchQuery || cardName.includes(searchQuery));
+
+        if (matchesCat && matchesSearch) {
+          card.style.display = 'flex';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      const noResults = document.getElementById('noMenuResults');
+      if (visibleCount === 0) {
+        noResults.style.display = 'block';
+      } else {
+        noResults.style.display = 'none';
+      }
+    }
+
+    // Gallery Category Filtering
+    function filterGallery(cat, btn) {
+      document.querySelectorAll('.gallery-pill').forEach(p => p.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      const items = document.querySelectorAll('.gallery-item');
+      items.forEach(item => {
+        const itemCat = item.getAttribute('data-cat');
+        if (cat === 'All' || itemCat === cat) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // Lightbox Logic
+    let currentLightboxIdx = 0;
+
+    function openLightbox(index) {
+      currentLightboxIdx = index;
+      updateLightboxContent();
+      document.getElementById('lightboxModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightboxModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function closeLightboxOnBackdrop(e) {
+      if (e.target.id === 'lightboxModal') {
+        closeLightbox();
+      }
+    }
+
+    function updateLightboxContent() {
+      const item = galleryData[currentLightboxIdx];
+      if (!item) return;
+      document.getElementById('lightboxImg').src = item.src;
+      document.getElementById('lightboxTitle').textContent = item.title;
+      document.getElementById('lightboxSub').textContent = item.subtitle;
+    }
+
+    function nextLightbox() {
+      currentLightboxIdx = (currentLightboxIdx + 1) % galleryData.length;
+      updateLightboxContent();
+    }
+
+    function prevLightbox() {
+      currentLightboxIdx = (currentLightboxIdx - 1 + galleryData.length) % galleryData.length;
+      updateLightboxContent();
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (document.getElementById('lightboxModal').classList.contains('open')) {
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') nextLightbox();
+        if (e.key === 'ArrowLeft') prevLightbox();
+      }
+    });
+
+    // Add click listeners to gallery items
+    document.querySelectorAll('.gallery-item').forEach((el) => {
+      el.addEventListener('click', () => {
+        const idx = parseInt(el.getAttribute('data-idx'), 10);
+        openLightbox(idx);
+      });
+    });
+
+    
+
+    
+
+    function closeSuccessModal() {
+      document.getElementById('successModal').classList.remove('open');
+    }
+
+    // Real-time Business Hours Checker (Victoria, BC time)
+    function checkLiveHours() {
+      const badge = document.getElementById('liveStatusBadge');
+      const text = document.getElementById('liveStatusText');
+      if (!badge || !text) return;
+
+      try {
+        // Victoria is America/Vancouver
+        const now = new Date();
+        const options = { timeZone: 'America/Vancouver', hour12: false, weekday: 'short', hour: 'numeric', minute: 'numeric' };
+        const parts = new Intl.DateTimeFormat('en-US', options).formatToParts(now);
+        
+        let weekday = '';
+        let hour = 0;
+        let minute = 0;
+        for (const p of parts) {
+          if (p.type === 'weekday') weekday = p.value;
+          if (p.type === 'hour') hour = parseInt(p.value, 10);
+          if (p.type === 'minute') minute = parseInt(p.value, 10);
+        }
+
+        const timeDecimal = hour + (minute / 60);
+
+        let isOpen = false;
+        let note = '';
+
+        if (weekday === 'Tue') {
+          isOpen = false;
+          note = 'Closed Today (Tuesday)';
+        } else if (weekday === 'Wed' || weekday === 'Thu' || weekday === 'Fri') {
+          const isLunch = timeDecimal >= 11.5 && timeDecimal < 14.0;
+          const isDinner = timeDecimal >= 16.5 && timeDecimal < 21.0;
+          isOpen = isLunch || isDinner;
+          if (isOpen) {
+            note = isLunch ? 'Open Now (Lunch until 2:00 PM)' : 'Open Now (Dinner until 9:00 PM)';
+          } else {
+            if (timeDecimal < 11.5) note = 'Opens for Lunch at 11:30 AM';
+            else if (timeDecimal < 16.5) note = 'Opens for Dinner at 4:30 PM';
+            else note = 'Closed for the Night';
+          }
+        } else if (weekday === 'Sat' || weekday === 'Sun') {
+          isOpen = timeDecimal >= 16.0 && timeDecimal < 21.5;
+          if (isOpen) {
+            note = 'Open Now (Dinner until 9:30 PM)';
+          } else {
+            if (timeDecimal < 16.0) note = 'Opens for Dinner at 4:00 PM';
+            else note = 'Closed for the Night';
+          }
+        } else if (weekday === 'Mon') {
+          isOpen = timeDecimal >= 16.5 && timeDecimal < 21.0;
+          if (isOpen) {
+            note = 'Open Now (Dinner until 9:00 PM)';
+          } else {
+            if (timeDecimal < 16.5) note = 'Opens for Dinner at 4:30 PM';
+            else note = 'Closed for the Night';
+          }
+        }
+
+        if (isOpen) {
+          badge.className = 'status-badge status-open';
+          text.textContent = '● ' + note;
+        } else {
+          badge.className = 'status-badge status-closed';
+          text.textContent = '● ' + (note || 'Currently Closed');
+        }
+      } catch (e) {
+        badge.className = 'status-badge status-open';
+        text.textContent = '● Welcome to Chiba Sushi';
+      }
+    }
+
+    // Initialize
+    
+    checkLiveHours();
+
+
+  </script>
+</body>
+</html>
