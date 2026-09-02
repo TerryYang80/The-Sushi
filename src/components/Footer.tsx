@@ -44,7 +44,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
             {/* Award Badge Pill */}
             <div className="inline-flex items-center gap-2.5 p-2.5 pr-4 bg-[#141414] border border-white/10 text-xs shadow-md">
               <img 
-                src="/images/award-2023.png" 
+                src="./images/award-2023.png" 
                 alt="2023 Best Sushi Victoria" 
                 className="w-8 h-8 object-contain"
               />

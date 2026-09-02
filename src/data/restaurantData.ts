@@ -24,28 +24,28 @@ export const RESTAURANT_INFO = {
 export const HERO_SLIDES = [
   {
     id: 1,
-    image: "/images/slides/slide_01.jpg",
+    image: "./images/slides/slide_01.jpg",
     title: "Victoria's Best Sushi Experience",
     subtitle: "Locally sourced B.C. wild salmon, pristine albacore, and artisanal sushi rolls crafted with heart in Quadra Village.",
     badge: "Quality Business Award Winner 2023"
   },
   {
     id: 2,
-    image: "/images/slides/slide_02.jpg",
+    image: "./images/slides/slide_02.jpg",
     title: "Signature Aburi Oshi & Rolls",
     subtitle: "Delicately flame-seared pressed sushi infused with house-blended sauces and premium toppings.",
     badge: "Chef's Signature Craft"
   },
   {
     id: 3,
-    image: "/images/slides/slide_03.jpg",
+    image: "./images/slides/slide_03.jpg",
     title: "Fresh Pacific Sashimi",
     subtitle: "Generous, pristine cuts of wild sockeye, hamachi, toro, and Hokkaido scallop prepared fresh daily.",
     badge: "Ocean Fresh Daily"
   },
   {
     id: 4,
-    image: "/images/slides/slide_04.jpg",
+    image: "./images/slides/slide_04.jpg",
     title: "Warm Izakaya & Sizzling Teppan",
     subtitle: "From crisp gyoza and takoyaki to sizzling teriyaki platters and comforting udon noodles.",
     badge: "Authentic Kitchen"
@@ -55,105 +55,105 @@ export const HERO_SLIDES = [
 export const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: "g1",
-    src: "/images/gallery/01_IMG_8341.jpg",
+    src: "./images/gallery/01_IMG_8341.jpg",
     title: "Artisanal Special Sushi Platter",
     subtitle: "A showcase of flame-torched signature rolls, fresh nigiri and tobiko garnish",
     category: "Special Rolls"
   },
   {
     id: "g2",
-    src: "/images/gallery/02_IMG_8320.jpg",
+    src: "./images/gallery/02_IMG_8320.jpg",
     title: "Seared Aburi Oshi Wild Salmon",
     subtitle: "BC wild sockeye salmon pressed sushi with house glaze and jalapeño accents",
     category: "Aburi Oshi"
   },
   {
     id: "g3",
-    src: "/images/gallery/03_IMG_8343.jpg",
+    src: "./images/gallery/03_IMG_8343.jpg",
     title: "Deluxe Sashimi Selection",
     subtitle: "Thick-cut fresh Pacific tuna, sockeye salmon, and sweet botan ebi",
     category: "Sashimi & Nigiri"
   },
   {
     id: "g4",
-    src: "/images/gallery/04_IMG_8348.jpg",
+    src: "./images/gallery/04_IMG_8348.jpg",
     title: "Chiba Signature Rolls",
     subtitle: "Drizzled with our secret savory unagi reduction and crisp tempura flakes",
     category: "Special Rolls"
   },
   {
     id: "g5",
-    src: "/images/gallery/05_IMG_8318.jpg",
+    src: "./images/gallery/05_IMG_8318.jpg",
     title: "The Jackie Roll",
     subtitle: "Torch-flamed prawns, tender asparagus tempura, and succulent beef tataki top",
     category: "Special Rolls"
   },
   {
     id: "g6",
-    src: "/images/gallery/06_IMG_8355.jpg",
+    src: "./images/gallery/06_IMG_8355.jpg",
     title: "Crisp Panko Karaage & Starters",
     subtitle: "Freshly prepared izakaya bites with dipping sauces and citrus",
     category: "Hot Kitchen"
   },
   {
     id: "g7",
-    src: "/images/gallery/07_IMG_8346.jpg",
+    src: "./images/gallery/07_IMG_8346.jpg",
     title: "Modern Dining Room Ambiance",
     subtitle: "Warm, welcoming atmosphere at our 2630 Quadra Street dining room",
     category: "Restaurant & Bar"
   },
   {
     id: "g8",
-    src: "/images/gallery/08_IMG_8316.jpg",
+    src: "./images/gallery/08_IMG_8316.jpg",
     title: "Fresh Nigiri Showcase",
     subtitle: "Hand-pressed nigiri honoring authentic Edo-style balance",
     category: "Sashimi & Nigiri"
   },
   {
     id: "g9",
-    src: "/images/gallery/09_IMG_8350.jpg",
+    src: "./images/gallery/09_IMG_8350.jpg",
     title: "Crispy Sushi Pizza & Specialty Maki",
     subtitle: "Crispy pan-seared rice crust topped with spicy sashimi and avocado",
     category: "Special Rolls"
   },
   {
     id: "g10",
-    src: "/images/gallery/10_IMG_8323.jpg",
+    src: "./images/gallery/10_IMG_8323.jpg",
     title: "Sizzling Teppanyaki Platter",
     subtitle: "Charred sweet teriyaki steak and chicken served with stir-fried garden vegetables",
     category: "Hot Kitchen"
   },
   {
     id: "g11",
-    src: "/images/gallery/11_IMG_9047.jpg",
+    src: "./images/gallery/11_IMG_9047.jpg",
     title: "Chef's Omakase Assortment",
     subtitle: "Seasonal varieties direct from Pacific suppliers and Tsukiji fish markets",
     category: "Sashimi & Nigiri"
   },
   {
     id: "g12",
-    src: "/images/gallery/12_IMG_2107.jpg",
+    src: "./images/gallery/12_IMG_2107.jpg",
     title: "Quadra Village Restaurant Interior",
     subtitle: "Cozy booths and attentive service since our move in June 2021",
     category: "Restaurant & Bar"
   },
   {
     id: "g13",
-    src: "/images/gallery/13_IMG_8329.jpg",
+    src: "./images/gallery/13_IMG_8329.jpg",
     title: "House Tempura & Udon",
     subtitle: "Golden battered tiger prawns and light seasonal vegetable tempura",
     category: "Hot Kitchen"
   },
   {
     id: "g14",
-    src: "/images/gallery/14_FullSizeRender.jpg",
+    src: "./images/gallery/14_FullSizeRender.jpg",
     title: "Grand Banquet Sushi Boat",
     subtitle: "A celebratory presentation of rolls, sashimi cuts, and aburi favorites",
     category: "Special Rolls"
   },
   {
     id: "g15",
-    src: "/images/gallery/14_IMG_1712.jpg",
+    src: "./images/gallery/14_IMG_1712.jpg",
     title: "Bar Seating & Craft Drinks",
     subtitle: "Pair your meal with premium chilled sake and Japanese draft beer",
     category: "Restaurant & Bar"
@@ -182,7 +182,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 15.95,
     description: "Torch-flamed prawns, tender asparagus tempura, topped with seared beef tataki, scallions and garlic ponzu reduction.",
     badge: "Chef Choice",
-    image: "/images/gallery/05_IMG_8318.jpg",
+    image: "./images/gallery/05_IMG_8318.jpg",
     pieces: "8 pcs"
   },
   {
@@ -193,7 +193,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 14.50,
     description: "Choice of spicy tuna or tiger shrimp tempura, layered with ripe sliced avocado, tobiko, and house unagi glaze.",
     badge: "Award Winner",
-    image: "/images/gallery/04_IMG_8348.jpg",
+    image: "./images/gallery/04_IMG_8348.jpg",
     pieces: "8 pcs"
   },
   {
@@ -204,7 +204,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 13.95,
     description: "Real fresh crab meat, sweet shrimp, velvety cream cheese, crisp cucumber, coated with bright smelt roe.",
     badge: "Local BC Wild",
-    image: "/images/gallery/01_IMG_8341.jpg",
+    image: "./images/gallery/01_IMG_8341.jpg",
     pieces: "8 pcs"
   },
   {
@@ -215,7 +215,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 14.95,
     description: "Spicy crab meat, masago, and avocado roll topped with lightly torched wild BC salmon and citrus mayo.",
     badge: "Popular",
-    image: "/images/gallery/02_IMG_8320.jpg",
+    image: "./images/gallery/02_IMG_8320.jpg",
     pieces: "8 pcs"
   },
   {
@@ -256,7 +256,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 12.50,
     description: "Pan-crisped sushi rice cake topped with spicy chopped salmon or tuna, creamy avocado, tobiko, and savory sauces.",
     badge: "Popular",
-    image: "/images/gallery/09_IMG_8350.jpg",
+    image: "./images/gallery/09_IMG_8350.jpg",
     pieces: "6 wedges"
   },
   {
@@ -288,7 +288,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 16.95,
     description: "Pressed box sushi topped with wild sockeye salmon, house-made creamy Japanese sauce, and flame-seared to perfection with serrano slice.",
     badge: "Award Winner",
-    image: "/images/gallery/02_IMG_8320.jpg",
+    image: "./images/gallery/02_IMG_8320.jpg",
     pieces: "6 pcs"
   },
   {
@@ -309,7 +309,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 21.95,
     description: "8 pieces of flame-seared nigiri: wild salmon, bluefin tuna, hotate scallop, unagi, hamachi, and botan ebi with artisan glazes.",
     badge: "Chef Choice",
-    image: "/images/gallery/08_IMG_8316.jpg",
+    image: "./images/gallery/08_IMG_8316.jpg",
     pieces: "8 pcs"
   },
   {
@@ -350,7 +350,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 32.95,
     description: "7 varieties of the day's finest ocean catch (18 pcs): wild sockeye, bluefin, hamachi, octopus, hokkigai, scallop & sweet prawn.",
     badge: "Award Winner",
-    image: "/images/gallery/03_IMG_8343.jpg",
+    image: "./images/gallery/03_IMG_8343.jpg",
     pieces: "18 pcs"
   },
   {
@@ -361,7 +361,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 17.50,
     description: "Ruby red, buttery and rich wild salmon harvested from British Columbia waters.",
     badge: "Local BC Wild",
-    image: "/images/slides/slide_03.jpg",
+    image: "./images/slides/slide_03.jpg",
     pieces: "8 pcs"
   },
   {
@@ -429,7 +429,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: "Lunch Specials",
     price: 11.95,
     description: "Steaming hot dashi broth with thick sanuki udon noodles, accompanied by 2 crispy prawn tempura and vegetable tempura.",
-    image: "/images/gallery/13_IMG_8329.jpg"
+    image: "./images/gallery/13_IMG_8329.jpg"
   },
   {
     id: "l4",
@@ -548,7 +548,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 15.95,
     description: "Marinated bone-in sweet soy short ribs served over a hot iron skillet with charred onions and sesame.",
     badge: "Popular",
-    image: "/images/gallery/10_IMG_8323.jpg"
+    image: "./images/gallery/10_IMG_8323.jpg"
   },
   {
     id: "t2",
@@ -565,7 +565,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: "Teppan & Bento",
     price: 13.95,
     description: "4 succulent tiger prawns, sweet yam, kabocha pumpkin, zucchini, and eggplant fried in light featherweight batter.",
-    image: "/images/gallery/13_IMG_8329.jpg"
+    image: "./images/gallery/13_IMG_8329.jpg"
   },
   {
     id: "t4",

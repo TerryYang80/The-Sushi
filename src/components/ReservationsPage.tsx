@@ -360,7 +360,7 @@ export const ReservationsPage: React.FC = () => {
 
           <div className="overflow-hidden border border-white/10">
             <img
-              src="/images/gallery/07_IMG_8346.jpg"
+              src="./images/gallery/07_IMG_8346.jpg"
               alt="Chiba Sushi Dining Room"
               className="w-full h-48 object-cover filter brightness-90"
             />

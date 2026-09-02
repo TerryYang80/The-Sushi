@@ -65,7 +65,7 @@ export const MenuPage: React.FC<MenuPageProps> = ({ onAddToCart }) => {
       <div className="relative bg-[#141414] border border-white/10 p-8 sm:p-14 overflow-hidden shadow-2xl">
         <div className="absolute right-0 top-0 bottom-0 w-1/2 opacity-20 pointer-events-none hidden md:block">
           <img 
-            src="/images/slides/slide_01.jpg" 
+            src="./images/slides/slide_01.jpg" 
             alt="Sushi" 
             className="w-full h-full object-cover filter contrast-125" 
           />

@@ -33,55 +33,55 @@ export const HomePage: React.FC<HomePageProps> = ({ setActiveTab, onAddToCart })
   // 9 Authentic slides available in /public/images/slides/
   const slides = [
     {
-      src: "/images/slides/slide_01.jpg",
+      src: "./images/slides/slide_01.jpg",
       title: "Victoria's Best Sushi",
       subtitle: "Crafted with passion, fresh Pacific seafood, and genuine Japanese hospitality.",
       tag: "Award Winning Taste"
     },
     {
-      src: "/images/slides/slide_02.jpg",
+      src: "./images/slides/slide_02.jpg",
       title: "Flame-Seared Aburi Oshi",
       subtitle: "Savory wild sockeye salmon pressed sushi kissed with open flame and chef's artisan glaze.",
       tag: "House Signature"
     },
     {
-      src: "/images/slides/slide_03.jpg",
+      src: "./images/slides/slide_03.jpg",
       title: "Pristine Pacific Sashimi",
       subtitle: "Thick, melt-in-your-mouth cuts of ocean-fresh tuna, salmon, hamachi and scallop.",
       tag: "Fresh Daily"
     },
     {
-      src: "/images/slides/slide_04.jpg",
+      src: "./images/slides/slide_04.jpg",
       title: "Handcrafted Specialty Rolls",
       subtitle: "From our renowned Jackie Roll and Chiba Roll to crispy sushi pizza and dynamite maki.",
       tag: "Artisanal Maki"
     },
     {
-      src: "/images/slides/slide_05.jpg",
+      src: "./images/slides/slide_05.jpg",
       title: "Warm Izakaya & Teppan Entrees",
       subtitle: "Sizzling beef short ribs, broiled black cod miso, hot dashi udon, and golden tempura.",
       tag: "Comfort Cuisine"
     },
     {
-      src: "/images/slides/slide_06.jpg",
+      src: "./images/slides/slide_06.jpg",
       title: "A Quadra Village Favorite",
       subtitle: "Serving loyal Victoria locals and visitors delicious Japanese meals since 2007.",
       tag: "Local Heritage"
     },
     {
-      src: "/images/slides/slide_07.jpg",
+      src: "./images/slides/slide_07.jpg",
       title: "Artful Presentation",
       subtitle: "Every platter is balanced with precision, color, and culinary harmony.",
       tag: "Culinary Art"
     },
     {
-      src: "/images/slides/slide_08.jpg",
+      src: "./images/slides/slide_08.jpg",
       title: "Generous Portions, Fair Prices",
       subtitle: "We believe exceptional sushi should be accessible, plentiful, and satisfying.",
       tag: "Value & Quality"
     },
     {
-      src: "/images/slides/slide_09.jpg",
+      src: "./images/slides/slide_09.jpg",
       title: "Dine-In, Takeout & Catering",
       subtitle: "Enjoy a relaxed evening at our sushi bar or take home Victoria's top-rated sushi.",
       tag: "Your Dining Destination"
@@ -237,7 +237,7 @@ export const HomePage: React.FC<HomePageProps> = ({ setActiveTab, onAddToCart })
             <div className="flex items-center gap-6">
               <div className="relative shrink-0">
                 <img 
-                  src="/images/award-2023.png" 
+                  src="./images/award-2023.png" 
                   alt="Quality Business Award 2023 Best Sushi in Victoria, BC" 
                   className="w-20 h-20 sm:w-24 sm:h-24 object-contain filter drop-shadow-[0_4px_16px_rgba(197,160,89,0.25)]"
                   onError={(e) => {
@@ -487,32 +487,32 @@ export const HomePage: React.FC<HomePageProps> = ({ setActiveTab, onAddToCart })
 
             <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-2 p-2 sm:p-4 bg-[#0d0d0d]">
               <img
-                src="/images/gallery/01_IMG_8341.jpg"
+                src="./images/gallery/01_IMG_8341.jpg"
                 alt="Chiba Sushi Victoria"
                 className="w-full h-44 sm:h-52 object-cover filter brightness-90 hover:brightness-100 transition-all"
               />
               <img
-                src="/images/gallery/02_IMG_8320.jpg"
+                src="./images/gallery/02_IMG_8320.jpg"
                 alt="Flame Seared Aburi"
                 className="w-full h-44 sm:h-52 object-cover filter brightness-90 hover:brightness-100 transition-all"
               />
               <img
-                src="/images/gallery/03_IMG_8343.jpg"
+                src="./images/gallery/03_IMG_8343.jpg"
                 alt="Fresh Sashimi"
                 className="w-full h-44 sm:h-52 object-cover filter brightness-90 hover:brightness-100 transition-all hidden sm:block"
               />
               <img
-                src="/images/gallery/07_IMG_8346.jpg"
+                src="./images/gallery/07_IMG_8346.jpg"
                 alt="Interior Dining"
                 className="w-full h-44 sm:h-52 object-cover filter brightness-90 hover:brightness-100 transition-all"
               />
               <img
-                src="/images/gallery/05_IMG_8318.jpg"
+                src="./images/gallery/05_IMG_8318.jpg"
                 alt="Jackie Roll"
                 className="w-full h-44 sm:h-52 object-cover filter brightness-90 hover:brightness-100 transition-all"
               />
               <img
-                src="/images/gallery/10_IMG_8323.jpg"
+                src="./images/gallery/10_IMG_8323.jpg"
                 alt="Teppanyaki Entree"
                 className="w-full h-44 sm:h-52 object-cover filter brightness-90 hover:brightness-100 transition-all hidden sm:block"
               />

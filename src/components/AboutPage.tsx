@@ -70,7 +70,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab }) => {
           <div className="space-y-4">
             <div className="border border-white/10 shadow-xl bg-[#141414]">
               <img
-                src="/images/img_2_IMG_8341.jpg"
+                src="./images/img_2_IMG_8341.jpg"
                 alt="Chiba Sushi Victoria Exterior & Platter"
                 className="w-full h-56 object-cover filter brightness-90 hover:brightness-100 transition-all duration-500"
               />
@@ -81,7 +81,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab }) => {
 
             <div className="border border-white/10 shadow-xl bg-[#141414]">
               <img
-                src="/images/gallery/07_IMG_8346.jpg"
+                src="./images/gallery/07_IMG_8346.jpg"
                 alt="Dining Room Ambiance"
                 className="w-full h-44 object-cover filter brightness-90 hover:brightness-100 transition-all duration-500"
               />
@@ -94,7 +94,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab }) => {
           <div className="space-y-4 pt-6">
             <div className="border border-white/10 shadow-xl bg-[#141414]">
               <img
-                src="/images/img_4.jpg"
+                src="./images/img_4.jpg"
                 alt="Chiba Sushi Quadra Village Entrance"
                 className="w-full h-44 object-cover filter brightness-90 hover:brightness-100 transition-all duration-500"
               />
@@ -105,7 +105,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab }) => {
 
             <div className="border border-white/10 shadow-xl bg-[#141414]">
               <img
-                src="/images/gallery/02_IMG_8320.jpg"
+                src="./images/gallery/02_IMG_8320.jpg"
                 alt="Aburi Oshi Sushi"
                 className="w-full h-56 object-cover filter brightness-90 hover:brightness-100 transition-all duration-500"
               />
@@ -124,7 +124,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab }) => {
 
         <div className="flex flex-col md:flex-row items-center gap-8 relative z-10">
           <img
-            src="/images/award-2023.png"
+            src="./images/award-2023.png"
             alt="Quality Business Award"
             className="w-28 h-28 object-contain shrink-0 filter drop-shadow-md"
           />
