@@ -1,0 +1,6 @@
+{
+  "name": "Chiba Sushi",
+  "description": "Modern Japanese restaurant website for Chiba Sushi in Victoria, BC featuring interactive menus, chef specials, online ordering, reservations, story, and photo gallery.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
